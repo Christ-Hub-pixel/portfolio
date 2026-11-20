@@ -152,12 +152,23 @@ function initThreeJSScene() {
 
   const isSmallScreen = window.innerWidth < 768;
   const mobileXScale = () => (window.innerWidth < 768 ? Math.max(0.45, Math.min(0.72, window.innerWidth / 640)) : 1);
+  const getRelicScale = () => {
+    const w = window.innerWidth;
+    const aspect = w / Math.max(1, window.innerHeight);
+    if (w <= 480 || aspect < 0.65) return 0.44;
+    if (w <= 768 || aspect < 0.85) return 0.58;
+    if (w <= 1024) return 0.78;
+    return 1;
+  };
+  const getGalaxyScale = () => (window.innerWidth <= 480 ? 0.52 : window.innerWidth <= 768 ? 0.68 : 1);
+  const getBaseCameraZ = () => (window.innerWidth <= 480 ? 44 : window.innerWidth <= 768 ? 40 : 34);
 
   const scene = new THREE.Scene();
   scene.fog = new THREE.FogExp2(0x030406, 0.0055);
 
   const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-  camera.position.set(0, 3, 34);
+  let baseCameraZ = getBaseCameraZ();
+  camera.position.set(0, 3, baseCameraZ);
 
   const renderer = new THREE.WebGLRenderer({
     canvas: canvas,
@@ -857,6 +868,14 @@ function initThreeJSScene() {
   relicGroup.add(satRed);
   relicGroup.add(satCyan);
 
+  // Mise à l'échelle adaptative des anneaux & du torus sur mobile / portrait
+  function applyResponsive3DScale() {
+    relicGroup.scale.setScalar(getRelicScale());
+    galaxyGroup.scale.setScalar(getGalaxyScale());
+    baseCameraZ = getBaseCameraZ();
+  }
+  applyResponsive3DScale();
+
   // =========================================================================
   // PARALLAXE, DÉFILEMENT & VOYAGE INTERSTELLAIRE
   // =========================================================================
@@ -882,6 +901,7 @@ function initThreeJSScene() {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
+    applyResponsive3DScale();
     const xScale = mobileXScale();
     languagePlanets.forEach((planet) => {
       planet.group.position.x = planet.baseX * xScale;
@@ -1057,7 +1077,7 @@ function initThreeJSScene() {
     }
     camera.position.x += (targetX * 28 - camera.position.x) * 0.045;
     camera.position.y += (3 - targetY * 22 - (scrollY * 0.004) - camera.position.y) * 0.045;
-    camera.position.z += (34 + Math.sin(scrollTravel) * 4 - warpEnergy * 5 - camera.position.z) * 0.04;
+    camera.position.z += (baseCameraZ + Math.sin(scrollTravel) * 4 - warpEnergy * 5 - camera.position.z) * 0.04;
 
     camera.rotation.z = -targetX * 0.12;
     camera.lookAt(0, -scrollY * 0.005, 0);

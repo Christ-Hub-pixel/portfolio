@@ -76,6 +76,7 @@ html {
   font-size: 16px;
   background-color: var(--bg-oled);
   color-scheme: dark;
+  overflow-x: clip;
 }
 
 body {
@@ -83,7 +84,7 @@ body {
   color: var(--text-main);
   background-color: var(--bg-oled);
   line-height: 1.65;
-  overflow-x: hidden;
+  overflow-x: clip;
   position: relative;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -434,18 +435,7 @@ button, a, .filter-btn, .copy-btn, .sound-toggle-btn, .terminal-tab-btn {
   position: relative;
 }
 
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  align-items: center;
-  gap: 3.5rem;
-}
-@media (max-width: 991px) {
-  .hero-grid {
-    grid-template-columns: 1fr;
-    gap: 2.8rem;
-  }
-}
+/* .hero-grid est défini dans la section Layout & Media Queries plus bas */
 
 .hero-text-col {
   position: relative;
@@ -1085,8 +1075,8 @@ button, a, .filter-btn, .copy-btn, .sound-toggle-btn, .terminal-tab-btn {
   top: auto;
   left: auto;
   transform: scale(1);
-  width: max-content;
-  max-width: min(360px, calc(100vw - 48px));
+  width: fit-content;
+  max-width: 100%;
   box-sizing: border-box;
   align-self: center;
   margin: 0 auto 0.75rem;
@@ -1530,8 +1520,8 @@ button, a, .filter-btn, .copy-btn, .sound-toggle-btn, .terminal-tab-btn {
 
 /* Infinite Marquee */
 .kinetic-marquee-strip {
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
+  width: 100%;
+  margin-left: 0;
   background: linear-gradient(90deg, #050608 0%, #151824 50%, #050608 100%);
   border-top: 1px solid var(--border-gold);
   border-bottom: 1px solid var(--border-gold);
@@ -2051,7 +2041,7 @@ button, a, .filter-btn, .copy-btn, .sound-toggle-btn, .terminal-tab-btn {
 /* Compétences Catégorisées */
 .skills-cat-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
   gap: 2rem;
   margin-top: 3rem;
 }
@@ -2111,6 +2101,9 @@ button, a, .filter-btn, .copy-btn, .sound-toggle-btn, .terminal-tab-btn {
   align-items: flex-start;
   margin-top: 3.5rem;
 }
+.contact-grid > * {
+  min-width: 0;
+}
 .contact-card-direct {
   background: var(--bg-glass-card);
   border: 1px solid var(--border-subtle);
@@ -2136,10 +2129,12 @@ button, a, .filter-btn, .copy-btn, .sound-toggle-btn, .terminal-tab-btn {
   display: flex;
   align-items: center;
   gap: 16px;
+  min-width: 0;
 }
 .contact-icon-box {
   width: 48px;
   height: 48px;
+  flex-shrink: 0;
   border-radius: var(--radius-sm);
   background: rgba(212, 175, 55, 0.1);
   border: 1px solid var(--border-gold);
@@ -2377,7 +2372,7 @@ textarea.form-control {
   gap: 12px;
   margin-top: 0.5rem;
 }
-.social-row .btn { min-width: 200px; }
+.social-row .btn { min-width: min(100%, 200px); }
 
 .footer-links {
   display: flex;
@@ -2504,25 +2499,55 @@ textarea.form-control {
   .nav-menu .nav-link.active { background: rgba(212, 175, 55, 0.1); }
 }
 
+@media (max-width: 1024px) {
+  .workflow-timeline {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  .stats-strip {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.4rem;
+  }
+}
+
+@media (max-width: 991px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 2.8rem;
+  }
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 2.2rem;
+  }
+  .hero-visual-col {
+    width: 100%;
+  }
+}
+
 @media (max-width: 768px) {
-  :root { --header-offset: 96px; }
+  :root { --header-offset: 82px; }
   .container { padding: 0 1.25rem; }
   .hud-telemetry { font-size: 0.65rem; padding: 8px 14px; }
   .hud-telemetry .hud-group:first-child { display: none; }
   .hud-telemetry .hud-group:last-child { margin-left: auto; }
-  .site-header { top: 30px; }
-  .site-header.scrolled { top: 10px; }
+  .site-header { top: 12px; }
+  .site-header.scrolled { top: 8px; }
   .nav-container { height: 60px; padding: 0 0.8rem 0 1rem; }
   .brand-sub { display: none; }
   #btnNavWhatsApp span { display: none; }
   #btnNavWhatsApp { width: 44px; padding: 0; }
 
-  .hero-section { padding-top: 130px; padding-bottom: 60px; min-height: auto; }
-  .hero-monumental-title { font-size: clamp(2.2rem, 11vw, 2.8rem); letter-spacing: -0.5px; }
+  .hero-section { padding-top: 108px; padding-bottom: 60px; min-height: auto; }
+  .hero-monumental-title { font-size: clamp(2.1rem, 10vw, 2.8rem); letter-spacing: -0.5px; }
   .hero-description { font-size: 1.02rem; }
   .hero-cta-group .btn { flex: 1 1 100%; }
   .hologram-card { aspect-ratio: auto; }
-  .hologram-card-inner { padding: 1.6rem; gap: 1rem; }
+  .hologram-card-inner { padding: 1.5rem 1.25rem; gap: 1rem; }
+  #cv { padding: 1.6rem !important; }
 
   .section, .workflow-section { padding: 80px 0; }
   .stats-strip { grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 40px 0 60px; }
@@ -2541,6 +2566,37 @@ textarea.form-control {
   .toast-notice { left: 16px; right: 16px; bottom: 20px; text-align: center; }
   .site-footer { padding-bottom: 50px; }
   .marquee-item { font-size: 0.95rem; }
+}
+
+@media (max-width: 480px) {
+  .hologram-card-header {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .hologram-stats-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .hologram-stat-item.text-right {
+    text-align: left;
+  }
+  .hologram-stat-divider {
+    width: 100%;
+    height: 1px;
+    margin: 0;
+  }
+  .hologram-stat-value {
+    white-space: normal;
+  }
+  .avatar-view-toggle {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .avatar-toggle-btn {
+    padding: 6px 12px;
+    font-size: 0.75rem;
+  }
 }
 
 /* ==========================================================================
@@ -2729,7 +2785,7 @@ textarea.form-control {
 
 .planetary-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
   gap: 1.2rem;
   margin-top: 1.4rem;
 }

@@ -151,20 +151,40 @@ function initThreeJSScene() {
   }
 
   const isSmallScreen = window.innerWidth < 768;
-  const mobileXScale = () => (window.innerWidth < 768 ? Math.max(0.45, Math.min(0.72, window.innerWidth / 640)) : 1);
+  const isUltraHD = !isSmallScreen && (window.innerWidth >= 1920 || (window.devicePixelRatio || 1) >= 2);
+  const texScale = isSmallScreen ? 1 : (window.innerWidth >= 2560 ? 3 : 2);
+  const mobileXScale = () => {
+    const w = window.innerWidth;
+    if (w < 768) return Math.max(0.45, Math.min(0.72, w / 640));
+    if (w >= 2560) return 1.24;
+    return 1;
+  };
   const getRelicScale = () => {
     const w = window.innerWidth;
     const aspect = w / Math.max(1, window.innerHeight);
-    if (w <= 480 || aspect < 0.65) return 0.44;
-    if (w <= 768 || aspect < 0.85) return 0.58;
-    if (w <= 1024) return 0.78;
-    return 1;
+    if (w <= 480 || aspect < 0.65) return 0.78;
+    if (w <= 768 || aspect < 0.85) return 0.92;
+    if (w <= 1024) return 1.05;
+    if (w >= 2560) return 1.32;
+    return 1.15;
   };
-  const getGalaxyScale = () => (window.innerWidth <= 480 ? 0.52 : window.innerWidth <= 768 ? 0.68 : 1);
-  const getBaseCameraZ = () => (window.innerWidth <= 480 ? 44 : window.innerWidth <= 768 ? 40 : 34);
+  const getGalaxyScale = () => {
+    const w = window.innerWidth;
+    if (w <= 480) return 0.85;
+    if (w <= 768) return 0.95;
+    if (w >= 2560) return 1.32;
+    return 1.15;
+  };
+  const getBaseCameraZ = () => {
+    const w = window.innerWidth;
+    if (w <= 480) return 30;
+    if (w <= 768) return 28;
+    if (w >= 2560) return 24;
+    return 25;
+  };
 
   const scene = new THREE.Scene();
-  scene.fog = new THREE.FogExp2(0x030406, 0.0055);
+  scene.fog = new THREE.FogExp2(0x030406, 0.0052);
 
   const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
   let baseCameraZ = getBaseCameraZ();
@@ -176,8 +196,17 @@ function initThreeJSScene() {
     antialias: !isSmallScreen,
     powerPreference: isSmallScreen ? "low-power" : "high-performance"
   });
+  const getTargetPixelRatio = () => Math.min(window.devicePixelRatio || 1, window.innerWidth < 768 ? 1.5 : 2);
   renderer.setSize(window.innerWidth, window.innerHeight);
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, isSmallScreen ? 1.25 : 1.75));
+  renderer.setPixelRatio(getTargetPixelRatio());
+  if ("outputEncoding" in renderer && THREE.sRGBEncoding) {
+    renderer.outputEncoding = THREE.sRGBEncoding;
+  }
+  if ("toneMapping" in renderer && THREE.ACESFilmicToneMapping) {
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.12;
+  }
+  const maxAnisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy ? renderer.capabilities.getMaxAnisotropy() : 1);
 
   // --- ÉCLAIRAGE STELLAIRE & NÉBULEUSE COSMIQUE ---
   const ambientLight = new THREE.AmbientLight(0x0E111C, 2.0);
@@ -217,12 +246,13 @@ function initThreeJSScene() {
     ctx.closePath();
   }
 
-  // 1. Texture de particule stellaire sous forme de symbole de code {}
+  // 1. Texture de particule stellaire sous forme de symbole de code {} (supersamplée 4K)
   function createCodeStarTexture() {
     const c = document.createElement("canvas");
-    c.width = 64;
-    c.height = 64;
+    c.width = 64 * texScale;
+    c.height = 64 * texScale;
     const ctx = c.getContext("2d");
+    ctx.scale(texScale, texScale);
 
     const rad = ctx.createRadialGradient(32, 32, 0, 32, 32, 30);
     rad.addColorStop(0, "rgba(255, 255, 255, 1)");
@@ -239,16 +269,18 @@ function initThreeJSScene() {
     ctx.fillText("{}", 32, 32);
 
     const tex = new THREE.CanvasTexture(c);
+    tex.anisotropy = maxAnisotropy;
     tex.needsUpdate = true;
     return tex;
   }
 
-  // 2. Texture de badge holographique flottant au-dessus des planètes
+  // 2. Texture de badge holographique flottant au-dessus des planètes (supersamplée 4K)
   function createPlanetBadgeSprite(title, role, colorHex) {
     const c = document.createElement("canvas");
-    c.width = 384;
-    c.height = 96;
+    c.width = 384 * texScale;
+    c.height = 96 * texScale;
     const ctx = c.getContext("2d");
+    ctx.scale(texScale, texScale);
 
     ctx.fillStyle = "rgba(7, 9, 15, 0.86)";
     roundRect(ctx, 4, 4, 376, 88, 16);
@@ -274,6 +306,7 @@ function initThreeJSScene() {
     ctx.fillText(role, 52, 68);
 
     const tex = new THREE.CanvasTexture(c);
+    tex.anisotropy = maxAnisotropy;
     const mat = new THREE.SpriteMaterial({
       map: tex,
       transparent: true,
@@ -285,12 +318,13 @@ function initThreeJSScene() {
     return sprite;
   }
 
-  // 3. Texture de planète stylisée selon le langage
+  // 3. Texture de planète stylisée selon le langage (haute définition 4K)
   function createPlanetTexture(type) {
     const c = document.createElement("canvas");
-    c.width = 512;
-    c.height = 256;
+    c.width = 512 * texScale;
+    c.height = 256 * texScale;
     const ctx = c.getContext("2d");
+    ctx.scale(texScale, texScale);
 
     if (type === "python") {
       // Dégradé bicolore emblématique Python (Or et Bleu nuit)
@@ -377,16 +411,18 @@ function initThreeJSScene() {
     }
 
     const tex = new THREE.CanvasTexture(c);
+    tex.anisotropy = maxAnisotropy;
     tex.needsUpdate = true;
     return tex;
   }
 
-  // 4. Sprites de code 3D flottant (extraits réels de programmation avec reflets néon)
+  // 4. Sprites de code 3D flottant (extraits réels de programmation supersamplés 4K)
   function createCodeSnippetSprite(codeText, tagColor) {
     const c = document.createElement("canvas");
-    c.width = 512;
-    c.height = 104;
+    c.width = 512 * texScale;
+    c.height = 104 * texScale;
     const ctx = c.getContext("2d");
+    ctx.scale(texScale, texScale);
 
     // Fond verre cybernétique haute joaillerie avec gradient
     const grad = ctx.createLinearGradient(0, 0, 512, 104);
@@ -423,6 +459,7 @@ function initThreeJSScene() {
     ctx.fillText(codeText, 90, 52);
 
     const tex = new THREE.CanvasTexture(c);
+    tex.anisotropy = maxAnisotropy;
     const mat = new THREE.SpriteMaterial({
       map: tex,
       transparent: true,
@@ -444,8 +481,9 @@ function initThreeJSScene() {
   galaxyGroup.rotation.z = -0.32;
   galaxyGroup.position.set(0, -2, -2);
 
-  // Disque d'accrétion d'énergie dorée
-  const accretionGeo = new THREE.RingGeometry(11.0, 16.5, 96);
+  // Disque d'accrétion d'énergie dorée (haute tessellation 4K)
+  const ringSegments = isSmallScreen ? 72 : (isUltraHD ? 160 : 112);
+  const accretionGeo = new THREE.RingGeometry(11.0, 16.5, ringSegments);
   const accretionMat = new THREE.MeshBasicMaterial({
     color: 0xFACC15,
     side: THREE.DoubleSide,
@@ -458,7 +496,7 @@ function initThreeJSScene() {
   galaxyGroup.add(accretionRing);
 
   // Disque secondaire rubis
-  const rubyRingGeo = new THREE.RingGeometry(17.0, 18.2, 96);
+  const rubyRingGeo = new THREE.RingGeometry(17.0, 18.2, ringSegments);
   const rubyRingMat = new THREE.MeshBasicMaterial({
     color: 0xFF1E56,
     side: THREE.DoubleSide,
@@ -589,7 +627,8 @@ function initThreeJSScene() {
     const xScale = mobileXScale();
     pGroup.position.set(cfg.pos[0] * xScale, cfg.pos[1], cfg.pos[2]);
 
-    const pGeo = new THREE.SphereGeometry(cfg.radius, isSmallScreen ? 24 : 36, isSmallScreen ? 24 : 36);
+    const planetSegs = isSmallScreen ? 24 : (isUltraHD ? 64 : 40);
+    const pGeo = new THREE.SphereGeometry(cfg.radius, planetSegs, planetSegs);
     const pMat = new THREE.MeshStandardMaterial({
       map: createPlanetTexture(cfg.key),
       roughness: 0.32,
@@ -600,7 +639,8 @@ function initThreeJSScene() {
     const pMesh = new THREE.Mesh(pGeo, pMat);
     pGroup.add(pMesh);
 
-    const pRingGeo = new THREE.TorusGeometry(cfg.radius * 1.52, 0.06, 12, 72);
+    const pRingTubular = isSmallScreen ? 64 : (isUltraHD ? 128 : 80);
+    const pRingGeo = new THREE.TorusGeometry(cfg.radius * 1.52, 0.06, isUltraHD ? 18 : 12, pRingTubular);
     const pRingMat = new THREE.MeshBasicMaterial({
       color: cfg.ringColor,
       transparent: true,
@@ -613,7 +653,7 @@ function initThreeJSScene() {
 
     let pRing2 = null;
     if (cfg.hasDualRing) {
-      const pRing2Geo = new THREE.TorusGeometry(cfg.radius * 1.8, 0.045, 12, 72);
+      const pRing2Geo = new THREE.TorusGeometry(cfg.radius * 1.8, 0.045, isUltraHD ? 18 : 12, pRingTubular);
       const pRing2Mat = new THREE.MeshBasicMaterial({
         color: 0xFACC15,
         transparent: true,
@@ -674,7 +714,7 @@ function initThreeJSScene() {
   // =========================================================================
   // MODÈLE 4 : CHAMP D'ÉTOILES GALACTIQUE & ÉTOILES FILANTES
   // =========================================================================
-  const starCount = isSmallScreen ? 420 : 1050;
+  const starCount = isSmallScreen ? 420 : (isUltraHD ? 1800 : 1100);
   const starPositions = new Float32Array(starCount * 3);
   const starColors = new Float32Array(starCount * 3);
   const paletteColors = [
@@ -711,11 +751,11 @@ function initThreeJSScene() {
   starFieldGeo.setAttribute("position", new THREE.BufferAttribute(starPositions, 3));
   starFieldGeo.setAttribute("color", new THREE.BufferAttribute(starColors, 3));
   const starFieldMat = new THREE.PointsMaterial({
-    size: isSmallScreen ? 0.75 : 0.9,
+    size: isSmallScreen ? 0.95 : 1.05,
     map: createCodeStarTexture(),
     vertexColors: true,
     transparent: true,
-    opacity: 0.78,
+    opacity: 0.9,
     depthWrite: false,
     blending: THREE.AdditiveBlending
   });
@@ -770,12 +810,12 @@ function initThreeJSScene() {
   scene.add(relicGroup);
   relicGroup.position.set(0, 0, 4);
 
-  // 1. Torus Knot monumental en Or Pur Chromé (Corps solide métallique)
+  // 1. Torus Knot monumental en Or Pur Chromé (Corps solide métallique haute définition 4K)
   const torusGeometry = new THREE.TorusKnotGeometry(
     9.4,
     2.3,
-    isSmallScreen ? 100 : 160,
-    isSmallScreen ? 20 : 32,
+    isSmallScreen ? 100 : (isUltraHD ? 240 : 168),
+    isSmallScreen ? 20 : (isUltraHD ? 48 : 32),
     2,
     3
   );
@@ -838,29 +878,31 @@ function initThreeJSScene() {
   const innerCoreMesh = new THREE.Mesh(innerCoreGeo, innerCoreMat);
   crystalMesh.add(innerCoreMesh);
 
-  // 5. Anneaux gyroscopiques orbitaux (Or, Rubis, Azur)
-  const ring1Geo = new THREE.TorusGeometry(14.6, 0.12, 16, 140);
+  // 5. Anneaux gyroscopiques orbitaux (Or, Rubis, Azur — courbes lisses 4K)
+  const orbitalRadialSegs = isSmallScreen ? 12 : (isUltraHD ? 24 : 16);
+  const orbitalTubularSegs = isSmallScreen ? 96 : (isUltraHD ? 220 : 140);
+  const ring1Geo = new THREE.TorusGeometry(14.6, 0.12, orbitalRadialSegs, orbitalTubularSegs);
   const ring1Mat = new THREE.MeshBasicMaterial({ color: 0xFACC15, transparent: true, opacity: 0.55 });
   const ring1 = new THREE.Mesh(ring1Geo, ring1Mat);
   ring1.rotation.x = Math.PI / 3.4;
   ring1.rotation.y = Math.PI / 5.5;
   relicGroup.add(ring1);
 
-  const ring2Geo = new THREE.TorusGeometry(16.5, 0.12, 16, 140);
+  const ring2Geo = new THREE.TorusGeometry(16.5, 0.12, orbitalRadialSegs, orbitalTubularSegs);
   const ring2Mat = new THREE.MeshBasicMaterial({ color: 0xFF1E56, transparent: true, opacity: 0.50 });
   const ring2 = new THREE.Mesh(ring2Geo, ring2Mat);
   ring2.rotation.x = -Math.PI / 3.8;
   ring2.rotation.z = Math.PI / 4.6;
   relicGroup.add(ring2);
 
-  const ring3Geo = new THREE.TorusGeometry(18.4, 0.08, 16, 140);
+  const ring3Geo = new THREE.TorusGeometry(18.4, 0.08, orbitalRadialSegs, orbitalTubularSegs);
   const ring3Mat = new THREE.MeshBasicMaterial({ color: 0x38BDF8, transparent: true, opacity: 0.45 });
   const ring3 = new THREE.Mesh(ring3Geo, ring3Mat);
   ring3.rotation.x = Math.PI / 2.2;
   relicGroup.add(ring3);
 
   // 6. Balises d'énergie orbitales (Satellites)
-  const satGeo = new THREE.SphereGeometry(0.38, 16, 16);
+  const satGeo = new THREE.SphereGeometry(0.38, isUltraHD ? 24 : 16, isUltraHD ? 24 : 16);
   const satGold = new THREE.Mesh(satGeo, new THREE.MeshBasicMaterial({ color: 0xFFDF00 }));
   const satRed = new THREE.Mesh(satGeo, new THREE.MeshBasicMaterial({ color: 0xFF1E56 }));
   const satCyan = new THREE.Mesh(satGeo, new THREE.MeshBasicMaterial({ color: 0x38BDF8 }));
@@ -900,6 +942,7 @@ function initThreeJSScene() {
   window.addEventListener("resize", () => {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
+    renderer.setPixelRatio(getTargetPixelRatio());
     renderer.setSize(window.innerWidth, window.innerHeight);
     applyResponsive3DScale();
     const xScale = mobileXScale();

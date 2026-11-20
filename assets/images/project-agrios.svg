@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgAgriOS" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0E1611" />
+      <stop offset="100%" stop-color="#060A08" />
+    </linearGradient>
+    <linearGradient id="goldAgriOS" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D4AF37" />
+      <stop offset="100%" stop-color="#4ADE80" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="380" rx="20" fill="url(#bgAgriOS)" stroke="#1F3325" stroke-width="2"/>
+  
+  <!-- Header -->
+  <rect x="35" y="30" width="530" height="50" rx="10" fill="#13241A" stroke="#D4AF37" stroke-opacity="0.25"/>
+  <text x="60" y="61" fill="#4ADE80" font-family="'Plus Jakarta Sans', sans-serif" font-size="16" font-weight="800">🤖 AgriOS / KÔA AI</text>
+  <rect x="420" y="40" width="130" height="30" rx="6" fill="#1A3324" stroke="#4ADE80" stroke-width="1"/>
+  <text x="485" y="60" fill="#4ADE80" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" text-anchor="middle">ASSISTANT IA ACTIF</text>
+
+  <!-- IA Chat Assistant Area -->
+  <g transform="translate(35, 95)">
+    <!-- User Prompt Bubble -->
+    <rect x="180" y="0" width="350" height="48" rx="12" fill="#172A1F" stroke="#2D4D3A"/>
+    <text x="200" y="28" fill="#E2E8F0" font-family="'Plus Jakarta Sans', sans-serif" font-size="12">« Quel est le meilleur traitement pour l'anacarde en saison sèche ? »</text>
+
+    <!-- AI Response Bubble -->
+    <rect x="0" y="60" width="460" height="85" rx="12" fill="#0C150F" stroke="#D4AF37" stroke-opacity="0.4"/>
+    <circle cx="30" cy="88" r="14" fill="#D4AF37"/>
+    <text x="30" y="93" fill="#07080A" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="900" text-anchor="middle">AI</text>
+    <text x="56" y="85" fill="#F5E083" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700">KÔA Assistant :</text>
+    <text x="56" y="105" fill="#C8D4CD" font-family="'Plus Jakarta Sans', sans-serif" font-size="11">Irrigation goutte-à-goutte recommandée + paillage organique.</text>
+    <text x="56" y="125" fill="#4ADE80" font-family="'JetBrains Mono', monospace" font-size="10">✓ Recommandation agronomique validée</text>
+
+    <!-- Metrics Bar -->
+    <rect x="0" y="160" width="530" height="75" rx="10" fill="#101C15" stroke="#253E2E"/>
+    <text x="25" y="192" fill="#88A392" font-family="'JetBrains Mono', monospace" font-size="11">RÉSEAU NEURONAL AGRICOLE</text>
+    <rect x="25" y="205" width="380" height="12" rx="6" fill="#1D2E24"/>
+    <rect x="25" y="205" width="340" height="12" rx="6" fill="url(#goldAgriOS)"/>
+    <text x="420" y="215" fill="#D4AF37" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700">92% Précision</text>
+  </g>
+</svg>

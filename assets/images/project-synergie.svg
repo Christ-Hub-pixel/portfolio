@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <defs>
+    <radialGradient id="bgGlowG" cx="50%" cy="45%" r="65%">
+      <stop offset="0%" stop-color="#0E1B34"/>
+      <stop offset="55%" stop-color="#080B14"/>
+      <stop offset="100%" stop-color="#040508"/>
+    </radialGradient>
+    <linearGradient id="blueGold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="50%" stop-color="#D4AF37"/>
+      <stop offset="100%" stop-color="#818CF8"/>
+    </linearGradient>
+    <filter id="shadowG" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="20" stdDeviation="22" flood-color="#000000" flood-opacity="0.85"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="500" fill="url(#bgGlowG)"/>
+  <circle cx="200" cy="120" r="160" fill="#38BDF8" opacity="0.1"/>
+  <circle cx="620" cy="370" r="160" fill="#D4AF37" opacity="0.09"/>
+
+  <!-- Desktop Browser Window -->
+  <g transform="translate(56, 38)" filter="url(#shadowG)">
+    <rect x="0" y="0" width="688" height="424" rx="18" fill="#0B0E17" stroke="url(#blueGold)" stroke-width="1.8"/>
+    <!-- Browser Top Bar -->
+    <rect x="0" y="0" width="688" height="38" rx="18" fill="#111624"/>
+    <rect x="0" y="20" width="688" height="18" fill="#111624"/>
+    <circle cx="22" cy="19" r="5" fill="#EF4444"/>
+    <circle cx="38" cy="19" r="5" fill="#F59E0B"/>
+    <circle cx="54" cy="19" r="5" fill="#22C55E"/>
+    <rect x="190" y="9" width="308" height="20" rx="10" fill="#080A12" stroke="#FFFFFF" stroke-opacity="0.1"/>
+    <text x="344" y="22" text-anchor="middle" fill="#9CA3AF" font-family="Consolas, monospace" font-size="10">https://global-tech-synergie.cloud/studio</text>
+
+    <!-- Header Inside Dashboard -->
+    <text x="28" y="74" fill="#FFFFFF" font-family="Segoe UI, sans-serif" font-size="18" font-weight="800">Global Tech Synergie</text>
+    <text x="28" y="92" fill="#94A3B8" font-family="Segoe UI, sans-serif" font-size="10.5">Studio Web, Déploiement Cloud &amp; Accompagnement Technique</text>
+    <rect x="536" y="58" width="124" height="28" rx="14" fill="#10B981" opacity="0.18" stroke="#34D399" stroke-opacity="0.5"/>
+    <text x="598" y="76" text-anchor="middle" fill="#34D399" font-family="Segoe UI, sans-serif" font-size="10" font-weight="700">● Cloudflare Edge ON</text>
+
+    <!-- 3 KPI Gauges -->
+    <rect x="28" y="112" width="198" height="92" rx="14" fill="#131929" stroke="#38BDF8" stroke-opacity="0.3"/>
+    <text x="44" y="136" fill="#94A3B8" font-family="Segoe UI, sans-serif" font-size="9.5" font-weight="700">PERFORMANCE WEB</text>
+    <text x="44" y="174" fill="#38BDF8" font-family="Segoe UI, sans-serif" font-size="28" font-weight="900">99/100</text>
+    <text x="44" y="192" fill="#4ADE80" font-family="Segoe UI, sans-serif" font-size="9">Lighthouse • Core Web Vitals</text>
+
+    <rect x="245" y="112" width="198" height="92" rx="14" fill="#131929" stroke="#D4AF37" stroke-opacity="0.35"/>
+    <text x="261" y="136" fill="#94A3B8" font-family="Segoe UI, sans-serif" font-size="9.5" font-weight="700">DÉPLOIEMENTS GIT</text>
+    <text x="261" y="174" fill="#FDE68A" font-family="Segoe UI, sans-serif" font-size="28" font-weight="900">CI / CD</text>
+    <text x="261" y="192" fill="#CBD5E1" font-family="Segoe UI, sans-serif" font-size="9">GitHub Pages • DNS &amp; SSL</text>
+
+    <rect x="462" y="112" width="198" height="92" rx="14" fill="#131929" stroke="#818CF8" stroke-opacity="0.3"/>
+    <text x="478" y="136" fill="#94A3B8" font-family="Segoe UI, sans-serif" font-size="9.5" font-weight="700">DISPONIBILITÉ</text>
+    <text x="478" y="174" fill="#34D399" font-family="Segoe UI, sans-serif" font-size="28" font-weight="900">99.98%</text>
+    <text x="478" y="192" fill="#CBD5E1" font-family="Segoe UI, sans-serif" font-size="9">Protection DDoS &amp; Cache</text>
+
+    <!-- Live Sites Showcase Panel -->
+    <rect x="28" y="222" width="415" height="176" rx="14" fill="#111624" stroke="#FFFFFF" stroke-opacity="0.08"/>
+    <text x="44" y="246" fill="#FDE68A" font-family="Segoe UI, sans-serif" font-size="10.5" font-weight="800" letter-spacing="0.8">PROJETS &amp; SITES DÉPLOYÉS</text>
+
+    <rect x="44" y="260" width="383" height="36" rx="10" fill="#182033"/>
+    <circle cx="62" cy="278" r="5" fill="#4ADE80"/>
+    <text x="76" y="282" fill="#FFFFFF" font-family="Segoe UI, sans-serif" font-size="10.5" font-weight="700">Portail Vitrine Entreprise</text>
+    <text x="412" y="282" text-anchor="end" fill="#38BDF8" font-family="Consolas, monospace" font-size="9.5">HTML5 / CSS3 / JS</text>
+
+    <rect x="44" y="304" width="383" height="36" rx="10" fill="#182033"/>
+    <circle cx="62" cy="322" r="5" fill="#4ADE80"/>
+    <text x="76" y="326" fill="#FFFFFF" font-family="Segoe UI, sans-serif" font-size="10.5" font-weight="700">Plateforme CMS WordPress Pro</text>
+    <text x="412" y="326" text-anchor="end" fill="#FDE68A" font-family="Consolas, monospace" font-size="9.5">WordPress • SSL</text>
+
+    <rect x="44" y="348" width="383" height="36" rx="10" fill="#182033"/>
+    <circle cx="62" cy="366" r="5" fill="#4ADE80"/>
+    <text x="76" y="370" fill="#FFFFFF" font-family="Segoe UI, sans-serif" font-size="10.5" font-weight="700">Infrastructure DNS &amp; CDN</text>
+    <text x="412" y="370" text-anchor="end" fill="#34D399" font-family="Consolas, monospace" font-size="9.5">Cloudflare • Git</text>
+
+    <!-- Right Traffic Graph Card -->
+    <rect x="462" y="222" width="198" height="176" rx="14" fill="#111624" stroke="#FFFFFF" stroke-opacity="0.08"/>
+    <text x="478" y="246" fill="#38BDF8" font-family="Segoe UI, sans-serif" font-size="10" font-weight="800">TRAFIC EDGE (24H)</text>
+    <path d="M478 358 L508 338 L536 344 L568 308 L600 318 L644 274" fill="none" stroke="#38BDF8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M478 358 L508 338 L536 344 L568 308 L600 318 L644 274 L644 374 L478 374 Z" fill="#38BDF8" opacity="0.14"/>
+    <circle cx="644" cy="274" r="4.5" fill="#FDE68A"/>
+    <text x="478" y="388" fill="#94A3B8" font-family="Consolas, monospace" font-size="8.5">Latence moy. : 18 ms</text>
+  </g>
+</svg>

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgG" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#14151B" />
+      <stop offset="100%" stop-color="#090A0D" />
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D4AF37" />
+      <stop offset="100%" stop-color="#F5E083" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="380" rx="20" fill="url(#bgG)" stroke="#272935" stroke-width="2"/>
+  <rect x="30" y="30" width="540" height="42" rx="10" fill="#1C1E26"/>
+  <circle cx="55" cy="51" r="5" fill="#EF4444"/>
+  <circle cx="72" cy="51" r="5" fill="#EAB308"/>
+  <circle cx="89" cy="51" r="5" fill="#22C55E"/>
+  <text x="120" y="56" fill="#8E94A4" font-family="'JetBrains Mono', monospace" font-size="12">codelingo.dev/challenge/01</text>
+  
+  <!-- Terminal / Code Area -->
+  <rect x="30" y="86" width="540" height="264" rx="12" fill="#0D0E13" stroke="#D4AF37" stroke-opacity="0.25" stroke-width="1.5"/>
+  <text x="60" y="130" fill="#D4AF37" font-family="'JetBrains Mono', monospace" font-size="15" font-weight="700">&lt;learn-code interactive="true"&gt;</text>
+  <text x="80" y="165" fill="#E2E8F0" font-family="'JetBrains Mono', monospace" font-size="13">const student = new Developer("Esli");</text>
+  <text x="80" y="195" fill="#E2E8F0" font-family="'JetBrains Mono', monospace" font-size="13">await student.learn(["Logic", "Algorithms"]);</text>
+  <text x="80" y="225" fill="#22C55E" font-family="'JetBrains Mono', monospace" font-size="13">// Output: 🚀 Code execution successful!</text>
+  <text x="60" y="260" fill="#D4AF37" font-family="'JetBrains Mono', monospace" font-size="15" font-weight="700">&lt;/learn-code&gt;</text>
+  
+  <rect x="60" y="290" width="140" height="36" rx="8" fill="url(#gold)"/>
+  <text x="130" y="313" fill="#0A0B0E" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="800" text-anchor="middle">TESTER LE CODE</text>
+  <rect x="215" y="290" width="110" height="36" rx="8" fill="#1C1E26" stroke="#D4AF37" stroke-opacity="0.4"/>
+  <text x="270" y="313" fill="#E2E8F0" font-family="'JetBrains Mono', monospace" font-size="12" text-anchor="middle">SCORE: 100%</text>
+</svg>

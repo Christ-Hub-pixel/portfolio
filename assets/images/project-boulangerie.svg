@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <defs>
+    <radialGradient id="bgGlowB" cx="50%" cy="45%" r="65%">
+      <stop offset="0%" stop-color="#3B230A"/>
+      <stop offset="55%" stop-color="#110D0A"/>
+      <stop offset="100%" stop-color="#05060A"/>
+    </radialGradient>
+    <linearGradient id="goldGradB" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDE68A"/>
+      <stop offset="50%" stop-color="#D4AF37"/>
+      <stop offset="100%" stop-color="#926C15"/>
+    </linearGradient>
+    <linearGradient id="amberCard" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#291D12"/>
+      <stop offset="100%" stop-color="#14100C"/>
+    </linearGradient>
+    <filter id="shadowB" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="20" flood-color="#000000" flood-opacity="0.8"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="500" fill="url(#bgGlowB)"/>
+  <circle cx="230" cy="140" r="140" fill="#D4AF37" opacity="0.09"/>
+  <circle cx="600" cy="360" r="150" fill="#F59E0B" opacity="0.08"/>
+
+  <!-- Phone 1 : Catalogue Bread+ -->
+  <g transform="translate(135, 36)" filter="url(#shadowB)">
+    <rect x="0" y="0" width="236" height="428" rx="30" fill="#0B0C10" stroke="url(#goldGradB)" stroke-width="2"/>
+    <rect x="10" y="10" width="216" height="408" rx="22" fill="#12100E"/>
+    <rect x="86" y="18" width="64" height="12" rx="6" fill="#050507"/>
+
+    <text x="24" y="54" fill="#FDE68A" font-family="Segoe UI, sans-serif" font-size="14" font-weight="800">Bread+</text>
+    <text x="24" y="69" fill="#9CA3AF" font-family="Segoe UI, sans-serif" font-size="9">Boulangerie de Babi • Livraison 15 min</text>
+    <rect x="176" y="42" width="38" height="20" rx="10" fill="#D4AF37" opacity="0.2"/>
+    <text x="195" y="55" text-anchor="middle" fill="#FDE68A" font-family="Segoe UI, sans-serif" font-size="9" font-weight="700">4.9 ★</text>
+
+    <!-- Search bar -->
+    <rect x="22" y="82" width="192" height="28" rx="10" fill="#1C1917" stroke="#D4AF37" stroke-opacity="0.25"/>
+    <text x="34" y="100" fill="#78716C" font-family="Segoe UI, sans-serif" font-size="10">Rechercher baguette, croissant...</text>
+
+    <!-- Featured Promo Banner -->
+    <rect x="22" y="122" width="192" height="72" rx="14" fill="url(#amberCard)" stroke="#D4AF37" stroke-opacity="0.45"/>
+    <text x="34" y="143" fill="#F59E0B" font-family="Segoe UI, sans-serif" font-size="8.5" font-weight="700" letter-spacing="1">FOURNÉE CHAUDE • 07H00</text>
+    <text x="34" y="161" fill="#FFFFFF" font-family="Segoe UI, sans-serif" font-size="13" font-weight="800">Pack Matin Doré</text>
+    <text x="34" y="177" fill="#D6D3D1" font-family="Segoe UI, sans-serif" font-size="9.5">2 Baguettes + 4 Croissants</text>
+    <rect x="150" y="160" width="54" height="22" rx="8" fill="url(#goldGradB)"/>
+    <text x="177" y="174" text-anchor="middle" fill="#09090B" font-family="Segoe UI, sans-serif" font-size="9" font-weight="800">2 500 F</text>
+
+    <!-- Product Cards -->
+    <rect x="22" y="206" width="90" height="114" rx="14" fill="#181512" stroke="#FFFFFF" stroke-opacity="0.08"/>
+    <circle cx="67" cy="242" r="22" fill="#D97706" opacity="0.28"/>
+    <ellipse cx="67" cy="242" rx="18" ry="10" fill="#F59E0B"/>
+    <text x="32" y="280" fill="#FFFFFF" font-family="Segoe UI, sans-serif" font-size="10.5" font-weight="700">Croissant</text>
+    <text x="32" y="294" fill="#A8A29E" font-family="Segoe UI, sans-serif" font-size="8.5">Pur beurre</text>
+    <text x="32" y="310" fill="#FDE68A" font-family="Segoe UI, sans-serif" font-size="10" font-weight="800">500 FCFA</text>
+
+    <rect x="124" y="206" width="90" height="114" rx="14" fill="#181512" stroke="#FFFFFF" stroke-opacity="0.08"/>
+    <circle cx="169" cy="242" r="22" fill="#B45309" opacity="0.28"/>
+    <rect x="148" y="236" width="42" height="12" rx="6" fill="#FBBF24"/>
+    <text x="134" y="280" fill="#FFFFFF" font-family="Segoe UI, sans-serif" font-size="10.5" font-weight="700">Baguette</text>
+    <text x="134" y="294" fill="#A8A29E" font-family="Segoe UI, sans-serif" font-size="8.5">Tradition Babi</text>
+    <text x="134" y="310" fill="#FDE68A" font-family="Segoe UI, sans-serif" font-size="10" font-weight="800">200 FCFA</text>
+
+    <!-- Bottom Cart CTA -->
+    <rect x="22" y="336" width="192" height="42" rx="14" fill="url(#goldGradB)"/>
+    <text x="38" y="361" fill="#09090B" font-family="Segoe UI, sans-serif" font-size="10.5" font-weight="800">Panier (3) • 3 200 FCFA</text>
+    <text x="198" y="361" text-anchor="end" fill="#09090B" font-family="Segoe UI, sans-serif" font-size="12" font-weight="900">→</text>
+
+    <rect x="78" y="398" width="80" height="4" rx="2" fill="#FFFFFF" opacity="0.25"/>
+  </g>
+
+  <!-- Phone 2 : Suivi Commande & B2B -->
+  <g transform="translate(425, 58)" filter="url(#shadowB)">
+    <rect x="0" y="0" width="242" height="404" rx="30" fill="#0B0C10" stroke="url(#goldGradB)" stroke-width="2"/>
+    <rect x="10" y="10" width="222" height="384" rx="22" fill="#0F1117"/>
+    <rect x="89" y="18" width="64" height="12" rx="6" fill="#050507"/>
+
+    <text x="24" y="54" fill="#FFFFFF" font-family="Segoe UI, sans-serif" font-size="13" font-weight="800">Suivi Livraison #BP-402</text>
+    <rect x="24" y="64" width="96" height="18" rx="9" fill="#16A34A" opacity="0.2"/>
+    <text x="72" y="76" text-anchor="middle" fill="#4ADE80" font-family="Segoe UI, sans-serif" font-size="8.5" font-weight="700">● En route • 6 min</text>
+
+    <!-- Map Mockup -->
+    <rect x="22" y="92" width="198" height="118" rx="14" fill="#151923" stroke="#D4AF37" stroke-opacity="0.3"/>
+    <path d="M36 184 Q88 152 126 156 T202 114" fill="none" stroke="#D4AF37" stroke-width="3" stroke-dasharray="6 4"/>
+    <circle cx="36" cy="184" r="6" fill="#4ADE80"/>
+    <circle cx="126" cy="156" r="7" fill="#FDE68A" stroke="#09090B" stroke-width="2"/>
+    <circle cx="202" cy="114" r="6" fill="#F59E0B"/>
+    <text x="34" y="110" fill="#9CA3AF" font-family="Segoe UI, sans-serif" font-size="8.5">Cocody → Grand-Bassam Express</text>
+
+    <!-- Order Timeline -->
+    <rect x="22" y="222" width="198" height="116" rx="14" fill="#161820" stroke="#FFFFFF" stroke-opacity="0.08"/>
+    <text x="34" y="242" fill="#FDE68A" font-family="Segoe UI, sans-serif" font-size="9.5" font-weight="700">COMMANDE B2B &amp; CLIENT</text>
+    <circle cx="40" cy="264" r="4" fill="#4ADE80"/><text x="52" y="267" fill="#E5E7EB" font-family="Segoe UI, sans-serif" font-size="9.5">Fournée validée (06:45)</text>
+    <circle cx="40" cy="288" r="4" fill="#4ADE80"/><text x="52" y="291" fill="#E5E7EB" font-family="Segoe UI, sans-serif" font-size="9.5">Prise en charge livreur (06:55)</text>
+    <circle cx="40" cy="312" r="4" fill="#FBBF24"/><text x="52" y="315" fill="#FDE68A" font-family="Segoe UI, sans-serif" font-size="9.5" font-weight="700">Arrivée estimée (07:05)</text>
+
+    <!-- Bottom Pill -->
+    <rect x="22" y="348" width="198" height="32" rx="10" fill="#1F2430"/>
+    <text x="121" y="368" text-anchor="middle" fill="#D4AF37" font-family="Segoe UI, sans-serif" font-size="9.5" font-weight="700">PostgreSQL • UML • E-commerce</text>
+  </g>
+</svg>

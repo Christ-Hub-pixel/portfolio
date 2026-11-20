@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ezoua Emian Christ Esli — Étudiant en génie logiciel</title>
+  
+  <!-- SEO & Métadonnées Ciblées -->
+  <meta name="description" content="Portfolio d'Ezoua Emian Christ Esli, étudiant en génie logiciel à l'Institut Ivoirien de Technologie. Projets web et mobile, IA, développement et distinctions en hackathon.">
+  <meta name="keywords" content="Ezoua Emian Christ Esli, étudiant en génie logiciel, Flutter, Python, JavaScript, Côte d'Ivoire">
+  <meta name="author" content="EZOUA EMIAN CHRIST ESLI">
+  <meta name="theme-color" content="#030406">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="EZOUA EMIAN CHRIST ESLI — Ingénierie Logicielle &amp; Intelligence Artificielle">
+  <meta property="og:description" content="Étudiant en génie logiciel à l'Institut Ivoirien de Technologie. Projets web et mobile, IA et distinctions en hackathon.">
+  <meta property="og:image" content="assets/images/avatar-eece.svg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/avatar-eece.svg">
+
+  <!-- Polices (préconnexion = chargement non bloquant, recommandation UI/UX Pro Max §3 Performance) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800&display=swap">
+
+  <!-- Stylesheet Haute Joaillerie (UI/UX Pro Max Liquid Glass) -->
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- Three.js (WebGL 3D Engine) — différé pour ne pas bloquer le premier rendu -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+</head>
+<body>
+
+  <!-- Lien d'évitement clavier (WCAG 2.4.1) -->
+  <a href="#mainContent" class="skip-link">Aller au contenu principal</a>
+
+  <!-- Barre de Progression de l'Odyssée -->
+  <div class="odyssey-progress-bar" aria-hidden="true">
+    <div class="odyssey-progress-fill" id="odysseyProgressFill"></div>
+  </div>
+
+  <!-- Moteur WebGL 3D Three.js & Ambiance Voie Lactée / Espace Profond -->
+  <canvas id="webglCanvas" aria-hidden="true"></canvas>
+  <div class="cosmic-nebula-ambient" aria-hidden="true"></div>
+  <div class="cosmic-vignette" aria-hidden="true"></div>
+  <div class="cosmic-starlight-dust" aria-hidden="true"></div>
+
+  <!-- Curseur Magnétique Intelligent -->
+  <div class="custom-cursor" id="customCursor" aria-hidden="true"></div>
+  <div class="custom-cursor-dot" id="customCursorDot" aria-hidden="true"></div>
+
+  <!-- Navigation Header Épuré Haute Couture -->
+  <header class="site-header" id="siteHeader">
+    <div class="nav-container">
+      <a href="#hero" class="brand-logo" id="navBrandLogo" aria-label="Accueil - EZOUA EMIAN CHRIST ESLI">
+        <div class="brand-crest">
+          <span class="brand-crest-letter">E</span>
+        </div>
+        <div class="brand-name-wrap">
+          <span class="brand-name">EZOUA ESLI</span>
+          <span class="brand-sub">GÉNIE LOGICIEL • IIT</span>
+        </div>
+      </a>
+
+      <nav aria-label="Navigation principale" class="main-nav">
+        <ul class="nav-menu" id="navMenuList">
+          <li><a href="#hero" class="nav-link" id="navLinkHero">Accueil</a></li>
+          <li><a href="#a-propos" class="nav-link" id="navLinkAPropos">À propos</a></li>
+          <li><a href="#projets" class="nav-link" id="navLinkProjets">Projets</a></li>
+          <li><a href="#github-activite" class="nav-link" id="navLinkGitHub">GitHub</a></li>
+          <li><a href="#contact" class="nav-link" id="navLinkContact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="https://wa.me/2250161407064" class="btn btn-whatsapp btn-sm" id="btnNavWhatsApp" data-link="whatsapp" target="_blank" rel="noopener">
+          <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+          <span>WhatsApp</span>
+        </a>
+        <!-- Menu mobile -->
+        <button type="button" class="menu-toggle-btn" id="menuToggleBtn" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navMenuList">
+          <span class="menu-bar"></span>
+          <span class="menu-bar"></span>
+          <span class="menu-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Contenu Principal -->
+  <main id="mainContent">
+
+    <!-- Section 1 : Hero Monumental (Prologue de l'Aventure) -->
+    <section class="hero-section" id="hero">
+      <div class="container">
+        
+        <div class="hero-grid">
+          
+          <div class="hero-text-col">
+            <div class="hero-editorial-badge">
+              <span class="pulse-dot"></span>
+              <span>ÉTUDIANT • INSTITUT IVOIRIEN DE TECHNOLOGIE (IIT)</span>
+            </div>
+
+            <h1 class="hero-monumental-title">
+              EZOUA EMIAN <br>
+              <span class="gold-liquid-shimmer">CHRIST ESLI</span>
+            </h1>
+
+            <!-- Ligne Cinétique Dynamique -->
+            <p class="sr-only">L'Odyssée Technologique d'Ezoua Emian Christ Esli : étudiant en Génie Logiciel à l'IIT Grand-Bassam, développeur Flutter, modélisation de données et intelligence artificielle.</p>
+            <div class="hero-kinetic-line" aria-hidden="true">
+              <span class="kinetic-prompt">&gt;</span>
+              <span class="kinetic-text" id="kineticRoleText">Étudiant en Génie Logiciel (IIT Grand-Bassam)</span>
+            </div>
+
+            <p class="hero-description">
+              <strong>Étudiant en génie logiciel à l’Institut Ivoirien de Technologie.</strong> Je développe des projets web et mobiles avec Flutter, Python, JavaScript et des bases de données, et j’explore les usages de l’intelligence artificielle.
+            </p>
+
+            <div class="hero-cta-group">
+              <a href="#projets" class="btn btn-gold">
+                <span>Explorer les projets</span>
+                <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+              </a>
+              <a href="https://wa.me/2250161407064" class="btn btn-outline-gold" data-link="whatsapp" target="_blank" rel="noopener">
+                <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                <span>Échanger sur WhatsApp</span>
+              </a>
+              <a href="cv_EZOUA_EMIAN.pdf" download="cv_EZOUA_EMIAN.pdf" class="btn btn-outline-gold" data-link="cv">
+                <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                <span>Télécharger le CV PDF</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Carte 3D Holographique Profil (Haute Joaillerie) -->
+          <div class="hero-visual-col">
+            <div class="hologram-card-stage">
+              <div class="hologram-card">
+                <div class="hologram-glare"></div>
+                <div class="hologram-card-inner">
+                  
+                  <div class="hologram-card-header">
+                    <div>
+                      <span class="hologram-subtitle">PROFIL ACADÉMIQUE</span>
+                      <h3 class="hologram-school-title">IIT CÔTE D'IVOIRE</h3>
+                    </div>
+                    <span class="hud-live-badge">L2 EN COURS</span>
+                  </div>
+
+                  <div class="avatar-hero-container" id="avatarHeroContainer">
+                    <!-- Bulle de dialogue interactive / Pensée vivante -->
+                    <div class="avatar-speech-bubble" id="avatarSpeechBubble" role="status" aria-live="polite">
+                      <span class="speech-text" id="avatarSpeechText">Bonjour, je suis Christ Esli. Cliquez pour découvrir mon profil.</span>
+                      <span class="speech-arrow" aria-hidden="true"></span>
+                    </div>
+
+                    <!-- Halo lumineux rouge rubis & or inspiré de la photo studio -->
+                    <div class="avatar-spotlight-halo" id="avatarSpotlightHalo" aria-hidden="true"></div>
+                    
+                    <!-- Anneaux d'énergie orbitaux 3D vivants -->
+                    <div class="avatar-orbital-ring ring-gold" aria-hidden="true"></div>
+                    <div class="avatar-orbital-ring ring-crimson" aria-hidden="true"></div>
+
+                    <!-- Cadre principal interactif avec moteur d'animation vidéo -->
+                    <div class="avatar-frame avatar-video-stage" id="avatarFrame" tabindex="0" role="button" aria-label="Avatar vidéo 3D animé d'EZOUA Christ Esli. Cliquez pour interagir.">
+                      <video id="heroAvatarVideo" class="avatar-video" autoplay loop muted playsinline preload="metadata" poster="assets/images/avatar-3d.jpg" width="168" height="168" aria-label="Animation 3D d'Ezoua Emian Christ Esli">
+                        <source src="assets/images/avatar-3d-loop.mp4" type="video/mp4">
+                        <img id="heroAvatarImg" src="assets/images/avatar-3d-animated.webp" alt="Portrait illustré animé d'Ezoua Emian Christ Esli" class="avatar-img" width="168" height="168">
+                      </video>
+                      <img id="heroPhotoImg" src="assets/images/ezoua-portrait.jpg" alt="Portrait studio réel d'EZOUA EMIAN CHRIST ESLI" class="avatar-img" width="168" height="168" style="display: none;">
+                      
+                      <!-- Canvas Moteur Vidéo FX Temps Réel (Électricité, Particules, Halo néon) -->
+                      <canvas id="avatarVideoCanvas" class="avatar-video-canvas" width="336" height="336" aria-hidden="true"></canvas>
+
+                      <!-- Viseur Vidéo Cyber & HUD Live Stream -->
+                      <div class="avatar-video-hud" aria-hidden="true">
+                        <div class="video-hud-corners">
+                          <span class="hud-corner top-left"></span>
+                          <span class="hud-corner top-right"></span>
+                          <span class="hud-corner bottom-left"></span>
+                          <span class="hud-corner bottom-right"></span>
+                        </div>
+                      </div>
+
+                      <!-- Balayage de reflet lumineux / Battement d'yeux vivant -->
+                      <div class="avatar-eye-gleam" aria-hidden="true"></div>
+                      <!-- Onde de choc au clic -->
+                      <div class="avatar-click-ripple" id="avatarClickRipple" aria-hidden="true"></div>
+                      <!-- Badge live de statut -->
+                      <span class="avatar-live-status" title="Boucle d’animation 3D">
+                        <span class="live-status-dot"></span> ANIMÉ
+                      </span>
+                    </div>
+
+                    <!-- Commutateur élégant Avatar 3D / Photo Réelle -->
+                    <div class="avatar-view-toggle" role="group" aria-label="Mode d'affichage portrait">
+                      <button type="button" class="avatar-toggle-btn active" id="btnViewAvatar3D" data-view="3d">
+                        <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                        <span>Avatar 3D</span>
+                      </button>
+                      <button type="button" class="avatar-toggle-btn" id="btnViewPhotoReal" data-view="photo">
+                        <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+                        <span>Photo Studio</span>
+                      </button>
+                    </div>
+
+                    <h4 class="avatar-person-name">
+                      EZOUA EMIAN CHRIST ESLI
+                    </h4>
+                    <p class="avatar-person-meta">
+                      Grand-Bassam, Comoé • Abidjan (Sur site · Hybride · À distance)
+                    </p>
+
+                    <!-- Badges Stack Technique Développeur -->
+                    <div class="hologram-dev-stack" aria-label="Stack technique principale">
+                      <span class="dev-tech-badge">Flutter 3</span>
+                      <span class="dev-tech-badge">Python 3.12</span>
+                      <span class="dev-tech-badge">PostgreSQL</span>
+                      <span class="dev-tech-badge">Firebase</span>
+                      <span class="dev-tech-badge">IA</span>
+                    </div>
+                  </div>
+
+                  <!-- Footer Palmarès & Arsenal Clé -->
+                  <div class="hologram-stats-row">
+                    <div class="hologram-stat-item">
+                      <span class="hologram-stat-label">PALMARÈS 2026</span>
+                      <p class="hologram-stat-value text-gold">2 Prix Hackathons</p>
+                    </div>
+                    <div class="hologram-stat-divider"></div>
+                    <div class="hologram-stat-item text-right">
+                      <span class="hologram-stat-label">ARSENAL CLÉ</span>
+                      <p class="hologram-stat-value">Flutter • Python • IA</p>
+                    </div>
+                  </div>
+
+                  <!-- Filigrane géant EECE -->
+                  <div class="crest-watermark" aria-hidden="true">E</div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Ruban Défilant Kinétique Infini (Marquee) -->
+    <div class="kinetic-marquee-strip" aria-hidden="true">
+      <div class="marquee-track">
+        <div class="marquee-item">
+          <svg class="marquee-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          <span>EZOUA EMIAN CHRIST ESLI</span>
+        </div>
+        <div class="marquee-item">
+          <svg class="marquee-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          <span>LICENCE 2 GÉNIE LOGICIEL</span>
+        </div>
+        <div class="marquee-item">
+          <svg class="marquee-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          <span>INSTITUT IVOIRIEN DE TECHNOLOGIE (IIT)</span>
+        </div>
+        <div class="marquee-item">
+          <svg class="marquee-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          <span>2ᵉ PLACE HACKATHON IIT 2026</span>
+        </div>
+        <div class="marquee-item">
+          <svg class="marquee-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          <span>3ᵉ PLACE VIBEATHON 2026</span>
+        </div>
+        <div class="marquee-item">
+          <svg class="marquee-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          <span>FLUTTER &amp; DART CROSS-PLATFORM</span>
+        </div>
+        <!-- Répétition pour fluidité -->
+        <div class="marquee-item">
+          <svg class="marquee-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          <span>EZOUA EMIAN CHRIST ESLI</span>
+        </div>
+        <div class="marquee-item">
+          <svg class="marquee-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          <span>LICENCE 2 GÉNIE LOGICIEL</span>
+        </div>
+        <div class="marquee-item">
+          <svg class="marquee-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          <span>INSTITUT IVOIRIEN DE TECHNOLOGIE (IIT)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section Chiffres Clés -->
+    <section class="container" aria-label="Statistiques clés">
+      <div class="stats-strip">
+        <div class="stat-card">
+          <div class="stat-val">L2</div>
+          <div class="stat-name">Génie Logiciel</div>
+          <div class="stat-sub">Sanctuaire IIT Grand-Bassam</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-val">02</div>
+          <div class="stat-name">Distinctions</div>
+          <div class="stat-sub">2ᵉ Place IIT &amp; 3ᵉ Place Vibeathon</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-val">06+</div>
+          <div class="stat-name">Projets présentés</div>
+          <div class="stat-sub">Web, mobile, IA, AgriTech &amp; Fintech</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-val">CI</div>
+          <div class="stat-name">Côte d'Ivoire</div>
+          <div class="stat-sub">Grand-Bassam</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Carte Interactive de l'Odyssée (Séquenceur d'Aventure) -->
+    <section class="container" aria-label="Carte de l'Odyssée Technologique">
+      <div class="odyssey-map-card">
+        <div class="odyssey-map-header">
+          <div class="odyssey-header-left">
+            <span class="adventure-badge">SÉQUENCEUR DE L'ODYSSÉE // JOURNAL DE BORD</span>
+            <h2 class="odyssey-title">La Carte de l'Aventure Technologique</h2>
+          </div>
+          <div class="odyssey-status-chip">
+            <span class="pulse-dot"></span>
+            <span>OBJECTIF : REJOINDRE UNE MISSION EN STAGE 2026</span>
+          </div>
+        </div>
+
+        <div class="odyssey-steps-track" id="odysseyTrack">
+          <a href="#a-propos" class="odyssey-node-btn" data-chapter="1">
+            <div class="node-badge">ACTE I</div>
+            <div class="node-title">L'Origine</div>
+            <div class="node-sub">Sanctuaire IIT</div>
+          </a>
+          <div class="odyssey-connector" aria-hidden="true"></div>
+          <a href="#workflow" class="odyssey-node-btn" data-chapter="2">
+            <div class="node-badge">ACTE II</div>
+            <div class="node-title">Le Rituel</div>
+            <div class="node-sub">Forge Logicielle</div>
+          </a>
+          <div class="odyssey-connector" aria-hidden="true"></div>
+          <a href="#distinctions" class="odyssey-node-btn" data-chapter="3">
+            <div class="node-badge">ACTE III</div>
+            <div class="node-title">Les Arènes</div>
+            <div class="node-sub">2 Hackathons 2026</div>
+          </a>
+          <div class="odyssey-connector" aria-hidden="true"></div>
+          <a href="#projets" class="odyssey-node-btn" data-chapter="4">
+            <div class="node-badge">ACTE IV</div>
+            <div class="node-title">Les projets</div>
+            <div class="node-sub">6 Artefacts Réels</div>
+          </a>
+          <div class="odyssey-connector" aria-hidden="true"></div>
+          <a href="#competences" class="odyssey-node-btn" data-chapter="5">
+            <div class="node-badge">ACTE V</div>
+            <div class="node-title">L'Arsenal</div>
+            <div class="node-sub">Arsenal d'Ingénierie</div>
+          </a>
+          <div class="odyssey-connector" aria-hidden="true"></div>
+          <a href="#contact" class="odyssey-node-btn" data-chapter="6">
+            <div class="node-badge">ÉPILOGUE</div>
+            <div class="node-title">L'Alliance</div>
+            <div class="node-sub">Transmission Stage</div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2 : Profil & Formation Académique (Acte I : L'Origine) -->
+    <section class="section" id="a-propos">
+      <div class="container">
+        
+        <div class="about-grid">
+          <div>
+            <span class="section-label">ACTE I // L'ORIGINE DU VOYAGE</span>
+            <h2 class="section-title">Le Sanctuaire Académique de l'IIT</h2>
+            
+            <p style="color: var(--text-main); font-size: 1.08rem; line-height: 1.8; margin-top: 1.5rem;">
+              Toute aventure d'ingénierie prend racine dans des fondations d'acier. C'est à l'<strong>Institut Ivoirien de Technologie (IIT)</strong> à Grand-Bassam que j'ai forgé mon approche : rigueur algorithmique, modélisation conceptuelle de données et discipline logicielle.
+            </p>
+            <p style="color: var(--text-muted); font-size: 0.98rem; line-height: 1.7; margin-top: 1rem;">
+              Avant d'écrire la moindre ligne de code, je cartographie l'architecture via UML et normalise les schémas relationnels sous PostgreSQL. Cette exigence me permet de passer rapidement du tableau blanc à des applications réactives sous Flutter et d'y intégrer l'Intelligence Artificielle.
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; margin-top: 2rem;">
+              <div style="background: rgba(212,175,55,0.04); border: 1px solid var(--border-gold); border-radius: var(--radius-md); padding: 1.2rem;">
+                <div style="color: var(--gold-primary); font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px;">Pilier Fondateur</div>
+                <h4 style="color: #FFFFFF; font-size: 1rem; font-weight: 700;">Architecture &amp; Rigueur</h4>
+                <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 4px;">Modélisation UML, API REST découplées et intégrité PostgreSQL.</p>
+              </div>
+
+              <div style="background: rgba(212,175,55,0.04); border: 1px solid var(--border-gold); border-radius: var(--radius-md); padding: 1.2rem;">
+                <div style="color: var(--gold-primary); font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px;">Épreuve du Feu</div>
+                <h4 style="color: #FFFFFF; font-size: 1rem; font-weight: 700;">Hackathons &amp; Vitesse</h4>
+                <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 4px;">Double primé en 2026 : prototypage rapide et esprit d'équipe sous contrainte.</p>
+              </div>
+            </div>
+          </div>
+
+          <div id="cv" style="background: var(--bg-glass-card); border: 1.5px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 2.4rem; backdrop-filter: blur(16px); box-shadow: 0 25px 60px rgba(0,0,0,0.8);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem;">
+              <span class="hud-live-badge">BASE ACADÉMIQUE OFFICIELLE</span>
+              <span style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--gold-light);">2026 — 2027</span>
+            </div>
+            <h3 style="font-family: var(--font-display); font-size: 1.45rem; color: #FFFFFF; font-weight: 900; line-height: 1.2;">Licence 2 — Génie Logiciel</h3>
+            <p style="color: var(--gold-primary); font-weight: 700; margin: 0.4rem 0 1.2rem 0; font-size: 0.95rem;">Institut Ivoirien de Technologie (IIT)</p>
+
+            <div style="border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); padding: 1.2rem 0; margin-bottom: 1.2rem;">
+              <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1.5px; display: block; margin-bottom: 0.6rem;">Socle d'ingénierie acquis :</span>
+              <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                <span class="skill-chip">Algorithmique</span>
+                <span class="skill-chip">Modélisation UML</span>
+                <span class="skill-chip">PostgreSQL</span>
+                <span class="skill-chip">Flutter &amp; Dart</span>
+                <span class="skill-chip">IA Appliquée</span>
+              </div>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <span style="font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-muted);">LOCALISATION</span>
+                <p style="color: #FFFFFF; font-weight: 700; font-size: 0.88rem; margin-top: 2px;">Grand-Bassam, CI</p>
+              </div>
+              <a href="cv_EZOUA_EMIAN.pdf" download="cv_EZOUA_EMIAN.pdf" class="btn btn-outline-gold btn-sm" data-link="cv" style="font-size: 0.8rem; padding: 6px 14px;">
+                <span>Consulter le CV officiel</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 3 : Workflow d'Ingénierie Logicielle (Acte II : Le Rituel du Bâtisseur) -->
+    <section class="workflow-section" id="workflow">
+      <div class="container">
+        <span class="section-label">ACTE II // LE RITUEL DU BÂTISSEUR</span>
+        <h2 class="section-title">La Forge Logicielle en 4 Épreuves</h2>
+        <p class="section-desc">
+          Une méthode structurée qui transforme une idée brute en un artefact robuste, évolutif et prêt pour la production.
+        </p>
+
+        <div class="workflow-timeline" id="workflowGrid">
+          <!-- Injecté par JavaScript avec SVG icons -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4 : Distinctions & Hackathons 2026 (Acte III : Les Arènes Stellaires) -->
+    <section class="section" id="distinctions">
+      <div class="container">
+        <span class="section-label">ACTE III // L'ÉPREUVE DU FEU</span>
+        <h2 class="section-title">Les Deux Grandes Arènes Hackathons 2026</h2>
+        <p class="section-desc">
+          L'épreuve sous contrainte extrême : 48 heures d'innovation continue, prototypage rapide et esprit d'équipe couronnés par un double sacre national.
+        </p>
+
+        <div class="distinctions-grid" id="distinctionsGrid">
+          <!-- Injecté par JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5 : Projets Réalisés avec 3D Tilt Gyroscopique (Acte IV : Les Grandes Expéditions) -->
+    <section class="section" id="projets">
+      <div class="container">
+        
+        <div class="projects-header-wrap">
+          <div>
+            <span class="section-label">ACTE IV // LES GRANDES EXPÉDITIONS</span>
+        <h2 class="section-title">Projets &amp; prototypes</h2>
+            <p class="section-desc">
+              Quelques projets et prototypes autour du mobile, de l’agriculture, des services numériques et du web.
+            </p>
+          </div>
+
+          <!-- Filtres de projets -->
+          <div class="project-filters" role="group" aria-label="Filtrer les projets">
+            <button type="button" class="filter-btn active" data-filter="all" id="filterBtnAll" aria-pressed="true">Tous les projets (6)</button>
+            <button type="button" class="filter-btn" data-filter="mobile" id="filterBtnMobile" aria-pressed="false">Projets mobiles</button>
+            <button type="button" class="filter-btn" data-filter="ia" id="filterBtnIA" aria-pressed="false">Projets IA &amp; Data</button>
+            <button type="button" class="filter-btn" data-filter="fintech" id="filterBtnFintech" aria-pressed="false">Fintech Sécurisée</button>
+            <button type="button" class="filter-btn" data-filter="web" id="filterBtnWeb" aria-pressed="false">Web &amp; Cloud Pro</button>
+          </div>
+        </div>
+
+        <!-- Grille des projets avec 3D Tilt (Responsive Tailwind : 1 col mobile, 2 tablette, 3 desktop) -->
+        <p class="sr-only" id="projectsCount" aria-live="polite"></p>
+        <div class="projects-grid" id="projectsGrid">
+          <noscript>
+            <p style="color: var(--gold-light);">Veuillez activer JavaScript pour afficher la grille des projets.</p>
+          </noscript>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 6 : Tableau interactif GitHub -->
+    <section class="section github-activity-section" id="github-activite">
+      <div class="container">
+        <span class="section-label">ACTE IV-B // LE TABLEAU DE BORD</span>
+        <h2 class="section-title">Mon activité <span class="text-gold-gradient">GitHub</span></h2>
+        <p class="section-desc">Explore mes statistiques, mon activité récente et les projets directement depuis ce tableau de bord.</p>
+
+        <div class="github-dashboard glass-card">
+          <div class="github-dashboard-top">
+            <div>
+              <span class="github-live-dot" aria-hidden="true"></span>
+              <span class="github-dashboard-label">PROFIL PUBLIC</span>
+              <h3>Christ-Hub-pixel</h3>
+            </div>
+            <a class="btn btn-outline-gold" href="https://github.com/Christ-Hub-pixel" target="_blank" rel="noopener">Ouvrir mon profil <span aria-hidden="true">↗</span></a>
+          </div>
+
+          <div class="github-tabs" role="tablist" aria-label="Contenu du tableau GitHub">
+            <button type="button" class="github-tab active" id="githubTabStats" role="tab" aria-selected="true" aria-controls="githubPanelStats" tabindex="0" data-github-tab="stats">Statistiques</button>
+            <button type="button" class="github-tab" id="githubTabActivity" role="tab" aria-selected="false" aria-controls="githubPanelActivity" tabindex="-1" data-github-tab="activity">Activité</button>
+            <button type="button" class="github-tab" id="githubTabProjects" role="tab" aria-selected="false" aria-controls="githubPanelProjects" tabindex="-1" data-github-tab="projects">Projets</button>
+          </div>
+
+          <div class="github-panel" id="githubPanelStats" role="tabpanel" aria-labelledby="githubTabStats" data-github-panel="stats">
+            <div class="github-stat-cards">
+              <a class="github-stat-card" href="https://github.com/Christ-Hub-pixel/commits/main" target="_blank" rel="noopener" aria-label="Voir les commits de Christ sur GitHub">
+                <img src="https://github-readme-stats.vercel.app/api?username=Christ-Hub-pixel&show_icons=true&theme=transparent&hide_border=true&title_color=D4AF37&icon_color=D4AF37&text_color=E5E7EB&bg_color=030406&locale=fr" alt="Statistiques GitHub de Christ. Cliquer pour consulter ses commits." loading="lazy">
+                <span>Ouvrir les commits <span aria-hidden="true">↗</span></span>
+              </a>
+              <a class="github-stat-card" href="https://github.com/Christ-Hub-pixel?tab=repositories" target="_blank" rel="noopener" aria-label="Voir les langages et dépôts de Christ sur GitHub">
+                <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Christ-Hub-pixel&layout=compact&theme=transparent&hide_border=true&title_color=D4AF37&text_color=E5E7EB&bg_color=030406&locale=fr" alt="Langages les plus utilisés dans les dépôts GitHub de Christ. Cliquer pour voir ses dépôts." loading="lazy">
+                <span>Explorer les langages <span aria-hidden="true">↗</span></span>
+              </a>
+            </div>
+          </div>
+
+          <div class="github-panel" id="githubPanelActivity" role="tabpanel" aria-labelledby="githubTabActivity" data-github-panel="activity" hidden>
+            <a class="github-activity-graph" href="https://github.com/Christ-Hub-pixel?tab=overview" target="_blank" rel="noopener" aria-label="Ouvrir l’activité GitHub de Christ">
+              <img src="https://github-readme-activity-graph.vercel.app/graph?username=Christ-Hub-pixel&bg_color=030406&color=D4AF37&line=D4AF37&point=FFFFFF&area=true&hide_border=true&custom_title=Contributions%20sur%20GitHub" alt="Graphique des contributions GitHub de Christ" loading="lazy">
+              <span>Voir toute l’activité GitHub <span aria-hidden="true">↗</span></span>
+            </a>
+          </div>
+
+          <div class="github-panel" id="githubPanelProjects" role="tabpanel" aria-labelledby="githubTabProjects" data-github-panel="projects" hidden>
+            <div class="github-repo-grid">
+              <a href="https://github.com/Christ-Hub-pixel/skill-IA" target="_blank" rel="noopener"><span class="repo-icon">✳</span><span><strong>skill-IA</strong><small>Compétences pour assistants IA</small></span><span class="repo-arrow">↗</span></a>
+              <a href="https://github.com/Christ-Hub-pixel/YODO" target="_blank" rel="noopener"><span class="repo-icon">◈</span><span><strong>YODO</strong><small>Site de boutique animé</small></span><span class="repo-arrow">↗</span></a>
+              <a href="https://github.com/Christ-Hub-pixel/AnalyseComparativeMarche" target="_blank" rel="noopener"><span class="repo-icon">⌁</span><span><strong>AnalyseComparativeMarche</strong><small>Comparaison de prix en Python</small></span><span class="repo-arrow">↗</span></a>
+              <a href="https://github.com/Christ-Hub-pixel/codelingo6" target="_blank" rel="noopener"><span class="repo-icon">⌘</span><span><strong>CodeLingo</strong><small>Application Flutter</small></span><span class="repo-arrow">↗</span></a>
+            </div>
+            <a class="github-all-repos" href="https://github.com/Christ-Hub-pixel?tab=repositories" target="_blank" rel="noopener">Voir tous les dépôts <span aria-hidden="true">→</span></a>
+          </div>
+          <p class="github-dashboard-note">Les cartes statistiques et le graphique sont fournis par des services externes et peuvent mettre quelques secondes à se charger.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 7 : Compétences Catégorisées & Atouts (Acte V : L'Arsenal & Les 4 Planètes) -->
+    <section class="section" id="competences">
+      <div class="container">
+        <span class="section-label">ACTE V // L'ARSENAL TECHNIQUE</span>
+        <h2 class="section-title">L'Arsenal du Bâtisseur &amp; Fondations Logicielles</h2>
+        <p class="section-desc">
+          Les 4 piliers technologiques majeurs qui structurent chacune de mes architectures et applications.
+        </p>
+
+        <!-- Carte d'explication des 4 Piliers d'Ingénierie -->
+        <div class="planetary-codex-card">
+          <div class="planetary-codex-header">
+            <span class="adventure-badge">SOCLE D'INGÉNIERIE // LES 4 PÔLES FONDAMENTAUX</span>
+            <span class="hud-live-badge">MAÎTRISE ACTIVE</span>
+          </div>
+          <div class="planetary-grid">
+            <div class="planet-lore-item" data-planet="python" role="button" tabindex="0" aria-label="Mettre en évidence la planète Python 3.12 dans la scène 3D">
+              <div class="planet-lore-icon" style="background: rgba(255, 212, 59, 0.12); border-color: #FFD43B; color: #FFD43B;">
+                <svg class="svg-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M8 12h8"></path><path d="M12 8v8"></path></svg>
+              </div>
+              <div class="planet-lore-text">
+                <h4 style="color: #FFD43B; font-size: 0.95rem; font-weight: 800;">Pôle Python 3.12</h4>
+                <p style="color: var(--text-muted); font-size: 0.82rem; margin-top: 2px;">Le moteur d'automatisation, d'algorithmique et d'ingénierie des données.</p>
+              </div>
+            </div>
+
+            <div class="planet-lore-item" data-planet="flutter" role="button" tabindex="0" aria-label="Mettre en évidence la planète Flutter et Dart dans la scène 3D">
+              <div class="planet-lore-icon" style="background: rgba(56, 189, 248, 0.12); border-color: #38BDF8; color: #38BDF8;">
+                <svg class="svg-icon" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline></svg>
+              </div>
+              <div class="planet-lore-text">
+                <h4 style="color: #38BDF8; font-size: 0.95rem; font-weight: 800;">Pôle Flutter &amp; Dart</h4>
+                <p style="color: var(--text-muted); font-size: 0.82rem; margin-top: 2px;">La conquête des écrans cross-platform avec fluidité et interfaces modernes.</p>
+              </div>
+            </div>
+
+            <div class="planet-lore-item" data-planet="postgres" role="button" tabindex="0" aria-label="Mettre en évidence la planète PostgreSQL dans la scène 3D">
+              <div class="planet-lore-icon" style="background: rgba(51, 103, 145, 0.18); border-color: #336791; color: #7DBBE6;">
+                <svg class="svg-icon" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+              </div>
+              <div class="planet-lore-text">
+                <h4 style="color: #7DBBE6; font-size: 0.95rem; font-weight: 800;">Pôle PostgreSQL &amp; DB</h4>
+                <p style="color: var(--text-muted); font-size: 0.82rem; margin-top: 2px;">Le sanctuaire des architectures relationnelles et de l'intégrité des données.</p>
+              </div>
+            </div>
+
+            <div class="planet-lore-item" data-planet="ai" role="button" tabindex="0" aria-label="Mettre en évidence la planète IA et PyTorch dans la scène 3D">
+              <div class="planet-lore-icon" style="background: rgba(255, 30, 86, 0.15); border-color: #FF1E56; color: #FF1E56;">
+                <svg class="svg-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              </div>
+              <div class="planet-lore-text">
+                <h4 style="color: #FF1E56; font-size: 0.95rem; font-weight: 800;">Pôle IA &amp; PyTorch</h4>
+                <p style="color: var(--text-muted); font-size: 0.82rem; margin-top: 2px;">Le réacteur cognitif pour les assistants intelligents et modèles prédictifs.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skills-cat-grid" id="skillsCategorized">
+          <!-- Injecté par JavaScript -->
+        </div>
+
+        <!-- Langues & Atouts (Zero Emojis - Vector SVG Only) -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.8rem; margin-top: 2rem;">
+          <div class="skill-cat-box">
+            <h3 class="skill-cat-title">
+              <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+              <span>Langues Maîtrisées</span>
+            </h3>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <div style="display: flex; justify-content: space-between; font-size: 0.95rem;">
+                <span style="color: #FFFFFF; font-weight: 700;">Français</span>
+                <span style="color: var(--gold-light); font-family: var(--font-mono);">Courant / Langue Maternelle</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 0.95rem;">
+                <span style="color: #FFFFFF; font-weight: 700;">Anglais</span>
+                <span style="color: var(--gold-light); font-family: var(--font-mono);">Intermédiaire / Technique &amp; Docs</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-cat-box">
+            <h3 class="skill-cat-title">
+              <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <span>Atouts Professionnels en Mission</span>
+            </h3>
+            <div class="skill-chips-wrap">
+              <span class="skill-chip">Autonomie</span>
+              <span class="skill-chip">Curiosité</span>
+              <span class="skill-chip">Esprit d'équipe</span>
+              <span class="skill-chip">Créativité</span>
+              <span class="skill-chip">Apprentissage rapide</span>
+              <span class="skill-chip">Sens de l'initiative</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 7 : Contact & Coordonnées Vérifiées (Épilogue : Sceller l'Alliance) -->
+    <section class="section" id="contact">
+      <div class="container">
+        <span class="section-label">ÉPILOGUE // SCELLER L'ALLIANCE</span>
+        <h2 class="section-title">Initier la Transmission pour la Prochaine Quête</h2>
+        <p class="section-desc">
+          Toute odyssée a besoin d'équipages audacieux et de nouveaux horizons. Disponible pour un stage en génie logiciel, une collaboration technique ou la construction de solutions à fort impact.
+        </p>
+
+        <div class="contact-grid">
+          
+          <!-- Carte Coordonnées Directes -->
+          <div class="contact-card-direct">
+            <h3 style="font-family: var(--font-display); color: #FFFFFF; font-size: 1.4rem; font-weight: 900;">
+              Canaux Officiels
+            </h3>
+
+            <!-- WhatsApp -->
+            <div class="contact-item">
+              <div class="contact-info-left">
+                <div class="contact-icon-box" style="background: rgba(37, 211, 102, 0.15); border-color: #25D366; color: #25D366;">
+                  <svg class="svg-icon" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                </div>
+                <div>
+                  <div class="contact-label">WhatsApp Direct</div>
+                  <div class="contact-value" data-bind="telephone1Affiche">+225 01 61 40 70 64</div>
+                </div>
+              </div>
+              <a href="https://wa.me/2250161407064" target="_blank" rel="noopener" class="btn btn-whatsapp btn-sm" data-link="whatsapp">
+                Ouvrir
+              </a>
+            </div>
+
+            <!-- Téléphone 1 -->
+            <div class="contact-item">
+              <div class="contact-info-left">
+                <div class="contact-icon-box">
+                  <svg class="svg-icon" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                </div>
+                <div>
+                  <div class="contact-label">Téléphone 1 (Principal)</div>
+                  <div class="contact-value" id="phone1Display" data-bind="telephone1Affiche">+225 01 61 40 70 64</div>
+                </div>
+              </div>
+              <button type="button" class="copy-btn" data-copy-target="phone1Display" aria-label="Copier le numéro principal">
+                <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <span>Copier</span>
+              </button>
+            </div>
+
+            <!-- Téléphone 2 -->
+            <div class="contact-item">
+              <div class="contact-info-left">
+                <div class="contact-icon-box">
+                  <svg class="svg-icon" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+                </div>
+                <div>
+                  <div class="contact-label">Téléphone 2 (Secondaire)</div>
+                  <div class="contact-value" id="phone2Display" data-bind="telephone2Affiche">+225 07 97 51 51 90</div>
+                </div>
+              </div>
+              <button type="button" class="copy-btn" data-copy-target="phone2Display" aria-label="Copier le numéro secondaire">
+                <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <span>Copier</span>
+              </button>
+            </div>
+
+            <!-- Email officiel -->
+            <div class="contact-item">
+              <div class="contact-info-left">
+                <div class="contact-icon-box">
+                  <svg class="svg-icon" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                </div>
+                <div>
+                  <div class="contact-label">Email Personnel</div>
+                  <div class="contact-value" id="emailDisplay" data-bind="email">ez.emian77@gmail.com</div>
+                </div>
+              </div>
+              <button type="button" class="copy-btn" data-copy-target="emailDisplay" aria-label="Copier l'adresse email">
+                <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <span>Copier</span>
+              </button>
+            </div>
+
+            <!-- Profils GitHub & LinkedIn Officiels -->
+            <div class="social-row">
+              <a href="https://github.com/Christ-Hub-pixel" target="_blank" rel="noopener" class="btn btn-outline-gold" style="flex: 1;" data-link="github">
+                <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                <span>GitHub : <strong data-bind="githubPseudo">Christ-Hub-pixel</strong></span>
+              </a>
+              <a href="https://linkedin.com/in/emian-ezoua" target="_blank" rel="noopener" class="btn btn-outline-gold" style="flex: 1;" data-link="linkedin">
+                <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                <span>LinkedIn : <strong data-bind="linkedinPseudo">emian-ezoua</strong> • 500+</span>
+              </a>
+            </div>
+
+          </div>
+
+          <!-- Formulaire Express vers WhatsApp -->
+          <div class="contact-form-box">
+            <h3 class="form-title">Envoyer un Message Rapide</h3>
+            <p class="form-desc">
+              Transmettez votre proposition de stage ou de projet : votre message sera pré-rempli sur WhatsApp pour un échange instantané.
+            </p>
+
+            <form id="portfolioContactForm" novalidate>
+              <div class="form-group">
+                <label for="senderName" class="form-label">VOTRE NOM / ENTREPRISE <span aria-hidden="true">*</span></label>
+                <input type="text" id="senderName" name="name" autocomplete="name" class="form-control" placeholder="Ex: Jean Kouassi — Entreprise Tech" required aria-describedby="senderNameError">
+                <p class="form-error" id="senderNameError" role="alert"></p>
+              </div>
+
+              <div class="form-group">
+                <label for="senderSubject" class="form-label">OBJET / TYPE D'OPPORTUNITÉ</label>
+                <input type="text" id="senderSubject" class="form-control" placeholder="Ex: Offre de stage en génie logiciel, Projet mobile...">
+              </div>
+
+              <div class="form-group">
+                <label for="senderMessage" class="form-label">VOTRE MESSAGE <span aria-hidden="true">*</span></label>
+                <textarea id="senderMessage" name="message" class="form-control" placeholder="Présentez brièvement la mission ou votre besoin technique..." required aria-describedby="senderMessageHelp senderMessageError"></textarea>
+                <p class="form-help" id="senderMessageHelp">Les champs marqués * sont obligatoires. Le message s'ouvrira dans WhatsApp.</p>
+                <p class="form-error" id="senderMessageError" role="alert"></p>
+              </div>
+
+              <button type="submit" class="btn btn-gold" style="width: 100%;" id="btnSubmitContact">
+                <span>Envoyer le Message sur WhatsApp</span>
+                <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+              </button>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Modale Détails du Projet -->
+  <div class="modal-overlay" id="projectModal" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalProjectTitle">
+      <button type="button" class="modal-close-btn" id="modalCloseBtn" aria-label="Fermer la fiche projet">
+        <svg class="svg-icon" viewBox="0 0 24 24" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      <div class="modal-body" id="modalDynamicContent">
+        <!-- Rempli par JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast-notice" id="toastNotice" role="status" aria-live="polite">
+    Information copiée
+  </div>
+
+  <!-- Pied de page Haute Horlogerie -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-wrap">
+        <div>
+          <span style="font-family: var(--font-display); font-size: 1.15rem; color: #FFFFFF; font-weight: 900;">EZOUA EMIAN CHRIST ESLI</span>
+          <br>
+          <span style="font-size: 0.82rem; color: var(--text-muted); font-family: var(--font-mono);">
+            Institut Ivoirien de Technologie (IIT) • Grand-Bassam, Côte d'Ivoire.
+          </span>
+        </div>
+        <div class="footer-links">
+          <a href="https://github.com/Christ-Hub-pixel" target="_blank" rel="noopener" class="footer-link" data-link="github">GitHub</a>
+          <a href="https://linkedin.com/in/emian-ezoua" target="_blank" rel="noopener" class="footer-link" data-link="linkedin">LinkedIn</a>
+          <a href="mailto:ez.emian77@gmail.com" class="footer-link" data-link="email">Email</a>
+          <a href="#hero" class="footer-link">
+            <span>Haut de page</span>
+            <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts (jQuery 3.7.1 + Configuration & Moteur Portfolio) -->
+  <script src="assets/js/config.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>

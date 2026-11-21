@@ -208,21 +208,21 @@ function initThreeJSScene() {
   }
   const maxAnisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy ? renderer.capabilities.getMaxAnisotropy() : 1);
 
-  // --- ÉCLAIRAGE STELLAIRE (Rouge Vif, Doré Sombre & Rouge Pur) ---
-  const ambientLight = new THREE.AmbientLight(0x1E0608, 1.55);
+  // --- ÉCLAIRAGE STELLAIRE (100% Rouge Vif & Rouge Pur) ---
+  const ambientLight = new THREE.AmbientLight(0x200408, 1.55);
   scene.add(ambientLight);
 
-  // Éclairage hémisphérique Doré Sombre / Rouge Pur
-  const hemiLight = new THREE.HemisphereLight(0xC2932A, 0x7A000A, 1.1);
+  // Éclairage hémisphérique Rouge Vif / Cramoisi Profond
+  const hemiLight = new THREE.HemisphereLight(0xFF2233, 0x5A0008, 1.12);
   scene.add(hemiLight);
 
-  // Lumière Cœur Galactique (Doré Sombre Chaleureux)
-  const coreLight = new THREE.PointLight(0xB8860B, 4.4, 125);
+  // Lumière Cœur Galactique (Rouge Vif)
+  const coreLight = new THREE.PointLight(0xFF1428, 4.6, 125);
   coreLight.position.set(0, 0, 5);
   scene.add(coreLight);
 
-  // Lumière Principale Directionnelle Doré Antique
-  const dirLight = new THREE.DirectionalLight(0xD4A238, 2.2);
+  // Lumière Principale Directionnelle Rouge Éclatant
+  const dirLight = new THREE.DirectionalLight(0xFF5566, 2.3);
   dirLight.position.set(16, 22, 26);
   scene.add(dirLight);
 
@@ -499,10 +499,10 @@ function initThreeJSScene() {
   const ringSegments = isSmallScreen ? 72 : (isUltraHD ? 160 : 112);
   const accretionGeo = new THREE.RingGeometry(11.0, 16.5, ringSegments);
   const accretionMat = new THREE.MeshBasicMaterial({
-    color: 0x8F6814,
+    color: 0xE60E20,
     side: THREE.DoubleSide,
     transparent: true,
-    opacity: 0.22,
+    opacity: 0.24,
     blending: THREE.AdditiveBlending
   });
   const accretionRing = new THREE.Mesh(accretionGeo, accretionMat);
@@ -733,9 +733,9 @@ function initThreeJSScene() {
   const starPositions = new Float32Array(starCount * 3);
   const starColors = new Float32Array(starCount * 3);
   const paletteColors = [
-    new THREE.Color(0xF5E6CC),
-    new THREE.Color(0xB8860B),
-    new THREE.Color(0xEE1122),
+    new THREE.Color(0xFFE4E6),
+    new THREE.Color(0xFF1E32),
+    new THREE.Color(0xE60018),
     new THREE.Color(0xFF0000)
   ];
 
@@ -793,7 +793,7 @@ function initThreeJSScene() {
   }
 
   const shootingCount = isSmallScreen ? 3 : 5;
-  const shootingColors = [0xB8860B, 0xEE1122, 0xFF0000];
+  const shootingColors = [0xFF1E32, 0xE60018, 0xFF0000];
   for (let i = 0; i < shootingCount; i++) {
     const geo = new THREE.BufferGeometry();
     const positions = new Float32Array(6);
@@ -835,11 +835,11 @@ function initThreeJSScene() {
     3
   );
   const torusMaterial = new THREE.MeshStandardMaterial({
-    color: 0x9E7419,
-    roughness: 0.24,
-    metalness: 0.78,
-    emissive: 0x4A2E05,
-    emissiveIntensity: 0.28,
+    color: 0xFF1428,
+    roughness: 0.2,
+    metalness: 0.72,
+    emissive: 0xA80010,
+    emissiveIntensity: 0.36,
     transparent: true,
     opacity: 0.94,
     side: THREE.DoubleSide
@@ -847,12 +847,12 @@ function initThreeJSScene() {
   const torusMesh = new THREE.Mesh(torusGeometry, torusMaterial);
   relicGroup.add(torusMesh);
 
-  // 2. Grillage d'énergie Doré Sombre (Wireframe holographique en surimpression)
+  // 2. Grillage d'énergie Rouge Vif (Wireframe holographique en surimpression)
   const torusWireMat = new THREE.MeshBasicMaterial({
-    color: 0xB88920,
+    color: 0xFF2E3D,
     wireframe: true,
     transparent: true,
-    opacity: 0.28,
+    opacity: 0.34,
     blending: THREE.AdditiveBlending
   });
   const torusWireMesh = new THREE.Mesh(torusGeometry, torusWireMat);
@@ -861,10 +861,10 @@ function initThreeJSScene() {
   // 3. Cristal de Cœur Rouge Vif (Focal central intense)
   const crystalGeo = new THREE.IcosahedronGeometry(5.2, 1);
   const crystalMat = new THREE.MeshStandardMaterial({
-    color: 0xEE1122,
+    color: 0xFF0A1E,
     roughness: 0.1,
     metalness: 0.3,
-    emissive: 0xCC0018,
+    emissive: 0xD40014,
     emissiveIntensity: 0.92,
     transparent: true,
     opacity: 0.92,
@@ -873,15 +873,15 @@ function initThreeJSScene() {
   const crystalMesh = new THREE.Mesh(crystalGeo, crystalMat);
   relicGroup.add(crystalMesh);
 
-  // Halo plasma : Doré Sombre → Rouge Vif → Rouge Pur à l'extrémité
+  // Halo plasma : Rouge Vif → Cramoisi → Rouge Pur à l'extrémité
   function createCoreAuraSprite() {
     const c = document.createElement("canvas");
     c.width = 512;
     c.height = 512;
     const ctx = c.getContext("2d");
     const g = ctx.createRadialGradient(256, 256, 12, 256, 256, 250);
-    g.addColorStop(0, "rgba(165, 118, 22, 0.38)");
-    g.addColorStop(0.36, "rgba(235, 18, 34, 0.36)");
+    g.addColorStop(0, "rgba(255, 22, 40, 0.42)");
+    g.addColorStop(0.38, "rgba(220, 0, 22, 0.36)");
     g.addColorStop(0.72, "rgba(255, 0, 0, 0.28)");
     g.addColorStop(1, "rgba(0, 0, 0, 0)");
     ctx.fillStyle = g;
@@ -900,9 +900,9 @@ function initThreeJSScene() {
   }
   relicGroup.add(createCoreAuraSprite());
 
-  // 4. Cage synaptique Rouge Vif + Cœur Doré Sombre
+  // 4. Cage synaptique Rouge Vif + Cœur Rouge Éclatant
   const crystalWireMat = new THREE.MeshBasicMaterial({
-    color: 0xFF2233,
+    color: 0xFF2A3B,
     wireframe: true,
     transparent: true,
     opacity: 0.58,
@@ -913,23 +913,23 @@ function initThreeJSScene() {
 
   const innerCoreGeo = new THREE.OctahedronGeometry(2.55, 0);
   const innerCoreMat = new THREE.MeshBasicMaterial({
-    color: 0xC89624,
+    color: 0xFF3B4A,
     wireframe: true,
     transparent: true,
-    opacity: 0.65,
+    opacity: 0.68,
     blending: THREE.AdditiveBlending
   });
   const innerCoreMesh = new THREE.Mesh(innerCoreGeo, innerCoreMat);
   crystalMesh.add(innerCoreMesh);
 
-  // 5. Anneaux gyroscopiques orbitaux (Doré Sombre, Rouge Vif, Rouge Pur à l'extérieur)
+  // 5. Anneaux gyroscopiques orbitaux (Rouge Vif → Cramoisi → Rouge Pur à l'extérieur)
   const orbitalRadialSegs = isSmallScreen ? 12 : (isUltraHD ? 24 : 16);
   const orbitalTubularSegs = isSmallScreen ? 96 : (isUltraHD ? 220 : 140);
   const ring1Geo = new THREE.TorusGeometry(14.6, 0.14, orbitalRadialSegs, orbitalTubularSegs);
   const ring1Mat = new THREE.MeshBasicMaterial({
-    color: 0xA87C1A,
+    color: 0xFF1A2B,
     transparent: true,
-    opacity: 0.56,
+    opacity: 0.6,
     blending: THREE.AdditiveBlending
   });
   const ring1 = new THREE.Mesh(ring1Geo, ring1Mat);
@@ -939,7 +939,7 @@ function initThreeJSScene() {
 
   const ring2Geo = new THREE.TorusGeometry(16.5, 0.14, orbitalRadialSegs, orbitalTubularSegs);
   const ring2Mat = new THREE.MeshBasicMaterial({
-    color: 0xEE1122,
+    color: 0xE00018,
     transparent: true,
     opacity: 0.62,
     blending: THREE.AdditiveBlending
@@ -960,10 +960,10 @@ function initThreeJSScene() {
   ring3.rotation.x = Math.PI / 2.2;
   relicGroup.add(ring3);
 
-  // 6. Balises d'énergie orbitales (Doré Sombre, Rouge Vif, Rouge Pur)
+  // 6. Balises d'énergie orbitales (Rouge Vif & Rouge Pur)
   const satGeo = new THREE.SphereGeometry(0.38, isUltraHD ? 24 : 16, isUltraHD ? 24 : 16);
-  const satGold = new THREE.Mesh(satGeo, new THREE.MeshBasicMaterial({ color: 0xB8860B }));
-  const satRed = new THREE.Mesh(satGeo, new THREE.MeshBasicMaterial({ color: 0xEE1122 }));
+  const satGold = new THREE.Mesh(satGeo, new THREE.MeshBasicMaterial({ color: 0xFF2233 }));
+  const satRed = new THREE.Mesh(satGeo, new THREE.MeshBasicMaterial({ color: 0xEE0018 }));
   const satCyan = new THREE.Mesh(satGeo, new THREE.MeshBasicMaterial({ color: 0xFF0000 }));
   relicGroup.add(satGold);
   relicGroup.add(satRed);

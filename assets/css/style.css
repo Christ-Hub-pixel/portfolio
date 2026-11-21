@@ -123,20 +123,21 @@ button, a, .filter-btn, .copy-btn, .sound-toggle-btn, .terminal-tab-btn {
   height: 100vh;
   z-index: 0;
   pointer-events: none;
-  opacity: 1;
+  opacity: 0.92;
+  filter: saturate(1.28) contrast(1.06) brightness(0.82);
 }
 
-/* Ambiance Nébuleuse Cosmique & Nuages Galactiques Sublimes */
+/* Ambiance Nébuleuse Cosmique — Rouge Vif, Doré Sombre & Rouge Pur en bordure */
 .cosmic-nebula-ambient {
   position: fixed;
   inset: 0;
-  background: 
-    radial-gradient(circle at 50% 48%, rgba(212, 175, 55, 0.16) 0%, transparent 42%),
-    radial-gradient(circle at 18% 28%, rgba(225, 29, 72, 0.20) 0%, transparent 52%),
-    radial-gradient(circle at 82% 65%, rgba(212, 175, 55, 0.15) 0%, transparent 48%),
-    radial-gradient(circle at 45% 82%, rgba(14, 165, 233, 0.12) 0%, transparent 58%),
-    radial-gradient(ellipse at 50% 0%, rgba(255, 30, 86, 0.16) 0%, transparent 60%);
-  filter: blur(45px);
+  background:
+    radial-gradient(circle at 50% 42%, rgba(154, 108, 18, 0.17) 0%, transparent 44%),
+    radial-gradient(circle at 18% 28%, rgba(235, 16, 32, 0.22) 0%, transparent 50%),
+    radial-gradient(circle at 82% 58%, rgba(140, 96, 16, 0.16) 0%, transparent 48%),
+    radial-gradient(ellipse at 50% 96%, rgba(255, 0, 0, 0.22) 0%, transparent 56%),
+    radial-gradient(circle at 88% 88%, rgba(255, 0, 0, 0.16) 0%, transparent 48%);
+  filter: blur(54px);
   pointer-events: none;
   z-index: 1;
   animation: cosmicBreathing 18s ease-in-out infinite alternate;
@@ -146,7 +147,7 @@ button, a, .filter-btn, .copy-btn, .sound-toggle-btn, .terminal-tab-btn {
 .cosmic-vignette {
   position: fixed;
   inset: 0;
-  background: radial-gradient(ellipse at 50% 50%, transparent 42%, rgba(3, 4, 6, 0.72) 100%);
+  background: radial-gradient(ellipse at 50% 50%, transparent 44%, rgba(8, 1, 2, 0.74) 100%);
   pointer-events: none;
   z-index: 1;
 }
@@ -154,16 +155,16 @@ button, a, .filter-btn, .copy-btn, .sound-toggle-btn, .terminal-tab-btn {
 /* Optimisation de l'arrière-plan cosmique sur écrans Full HD / 2K / 4K */
 @media (min-width: 1920px) {
   .cosmic-nebula-ambient {
-    filter: blur(72px);
+    filter: blur(76px);
     background:
-      radial-gradient(circle at 50% 48%, rgba(212, 175, 55, 0.18) 0%, transparent 44%),
-      radial-gradient(circle at 16% 26%, rgba(225, 29, 72, 0.22) 0%, transparent 50%),
-      radial-gradient(circle at 84% 66%, rgba(212, 175, 55, 0.17) 0%, transparent 48%),
-      radial-gradient(circle at 46% 84%, rgba(14, 165, 233, 0.14) 0%, transparent 56%),
-      radial-gradient(ellipse at 50% 0%, rgba(255, 30, 86, 0.18) 0%, transparent 58%);
+      radial-gradient(circle at 50% 42%, rgba(154, 108, 18, 0.19) 0%, transparent 46%),
+      radial-gradient(circle at 16% 26%, rgba(235, 16, 32, 0.24) 0%, transparent 52%),
+      radial-gradient(circle at 84% 58%, rgba(140, 96, 16, 0.18) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 96%, rgba(255, 0, 0, 0.24) 0%, transparent 58%),
+      radial-gradient(circle at 88% 88%, rgba(255, 0, 0, 0.18) 0%, transparent 50%);
   }
   .cosmic-vignette {
-    background: radial-gradient(ellipse at 50% 50%, transparent 46%, rgba(3, 4, 6, 0.76) 100%);
+    background: radial-gradient(ellipse at 50% 50%, transparent 46%, rgba(8, 1, 2, 0.76) 100%);
   }
 }
 

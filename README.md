@@ -1,28 +1,46 @@
 # Portfolio — Ezoua Emian Christ Esli
 
-Portfolio personnel présentant mon parcours en génie logiciel, mes compétences, distinctions, projets et prototypes. Le site utilise une identité visuelle sombre avec des accents dorés et propose plusieurs interactions accessibles depuis la page.
+> Étudiant en génie logiciel à l’Institut Ivoirien de Technologie (IIT), Grand-Bassam.
 
-## Contenu
+## 🌐 Portfolio en ligne
 
-- Présentation et parcours à l’Institut Ivoirien de Technologie (IIT).
-- Projets et prototypes, avec filtres et fenêtres de détail.
-- Tableau GitHub interactif (statistiques, activité et dépôts). Les images de statistiques sont fournies par des services externes.
-- Console de démonstration : les commandes et extraits affichés sont simulés et n’exécutent pas de commande système.
-- Formulaire et liens de contact.
+[**Découvrir le portfolio**](https://christ-hub-pixel.github.io/portfolio/)
+
+![Portrait de Ezoua Emian Christ Esli](assets/images/avatar-3d.jpg)
+
+## À propos
+
+Ce site présente mon parcours, mes compétences, mes distinctions et mes projets web et mobiles. Certains projets sont des concepts ou des prototypes ; leur état est précisé sur le site.
+
+## Ce que tu trouveras
+
+- Présentation de mon parcours et de mes objectifs professionnels.
+- Projets filtrables avec fiches détaillées.
+- Activité GitHub et liens vers mes dépôts.
+- Interactions et animations 3D.
+- Contact et téléchargement de mon CV.
 
 ## Technologies
 
-HTML, CSS et JavaScript, avec Three.js pour les éléments 3D. Certaines polices et visualisations GitHub sont chargées depuis des services externes.
+HTML, CSS, JavaScript et Three.js. Les polices, certaines statistiques GitHub et les animations peuvent nécessiter une connexion Internet.
 
-## Ouvrir le portfolio
+## Lancer en local
 
-Ouvre `index.html` dans un navigateur récent. La connexion Internet est nécessaire pour les polices, les éléments 3D et les cartes GitHub hébergées à l’extérieur.
+Depuis le dossier du projet, lance un serveur web local :
 
-## Modifier les informations
+```bash
+python -m http.server 8000
+```
 
-- `assets/js/config.js` contient les informations de présentation et les fiches projets.
-- `assets/css/style.css` contient les styles et adaptations aux écrans.
-- `assets/js/main.js` contient les interactions de la page.
-- `index.html` contient la structure des sections.
+Puis ouvre [http://localhost:8000](http://localhost:8000) dans ton navigateur.
 
-Les projets peuvent être des concepts ou prototypes : leur fiche indique leur statut et leur périmètre.
+## Mise à jour du contenu
+
+- `index.html` — structure des sections.
+- `assets/js/config.js` — présentation et fiches projets.
+- `assets/js/main.js` — interactions de la page.
+- `assets/css/style.css` — styles et adaptation mobile.
+
+## Publication
+
+Le site est publié avec GitHub Pages depuis la branche `main` : [christ-hub-pixel.github.io/portfolio](https://christ-hub-pixel.github.io/portfolio/).

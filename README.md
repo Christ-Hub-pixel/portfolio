@@ -6,7 +6,6 @@
 
 [**Découvrir le portfolio**](https://christ-hub-pixel.github.io/portfolio/)
 
-![Portrait de Ezoua Emian Christ Esli](assets/images/avatar-3d.jpg)
 
 ## À propos
 

@@ -2370,7 +2370,7 @@ function initProjects(config) {
               <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </button>
             <div style="display:flex; align-items:center; gap:8px;">
-              <a href="${config.contacts.github}" target="_blank" rel="noopener" class="btn-github-inline" title="Consulter le profil GitHub de Christ" aria-label="Profil GitHub du projet">
+              <a href="${p.githubUrl || config.contacts.github}" target="_blank" rel="noopener" class="btn-github-inline" title="Consulter le dépôt GitHub du projet ${p.titre}" aria-label="Dépôt GitHub du projet ${p.titre}">
                 <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
               </a>
               <span style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--gold-primary); font-weight: 800;">${p.annee}</span>
@@ -2482,11 +2482,21 @@ function initDistinctions(config) {
           <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
           <span>${item.badge}</span>
         </span>
-        <span class="distinction-year">${item.annee} • ${item.missionCode || "DÉFI"}</span>
+        <span class="distinction-year">${item.annee} • ${item.missionCode || "HACKATHON"}</span>
       </div>
       <h3 class="distinction-title">${item.titre}</h3>
       <p class="distinction-org">${item.organisation} • <span style="color: var(--gold-warm); font-weight: 700;">${item.epreuve || "Sprint 48h"}</span></p>
       <p class="distinction-desc">${item.description}</p>
+      ${
+        item.thematique || item.role || item.resultat
+          ? `<div class="distinction-meta-grid">
+              ${item.thematique ? `<div class="distinction-meta-item"><span>Thématique</span><strong>${item.thematique}</strong></div>` : ""}
+              ${item.role ? `<div class="distinction-meta-item"><span>Rôle personnel</span><strong>${item.role}</strong></div>` : ""}
+              ${item.problemeResolu ? `<div class="distinction-meta-item"><span>Défi résolu</span><strong>${item.problemeResolu}</strong></div>` : ""}
+              ${item.resultat ? `<div class="distinction-meta-item"><span>Résultat</span><strong>${item.resultat}</strong></div>` : ""}
+            </div>`
+          : ""
+      }
     `;
     container.appendChild(card);
   });
@@ -2632,40 +2642,36 @@ function openProjectModal(projectId, config, trigger) {
 
   modalContent.innerHTML = `
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem; flex-wrap: wrap; gap: 8px;">
-      <span class="adventure-badge">${project.badge || "PROJET"}</span>
+      <span class="adventure-badge">ÉTUDE DE CAS // ${project.badge || "PROJET"}</span>
       <span style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--gold-light);">${project.annee}</span>
     </div>
-    <h2 class="section-title" id="modalProjectTitle" style="margin-bottom: 0.2rem;">${project.titre}</h2>
-    <p style="color: var(--gold-light); font-size: 1.1rem; font-weight: 700; margin-bottom: 1.2rem;">${project.sousTitre}</p>
+    <h2 class="section-title" id="modalProjectTitle" style="margin-bottom: 0.25rem;">${project.titre}</h2>
+    <p style="color: var(--gold-light); font-size: 1.05rem; font-weight: 700; margin-bottom: 1.15rem;">${project.sousTitre}</p>
 
-    <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 1.5rem;">
+    <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 1.4rem;">
       <span class="hud-live-badge"><span>STATUT : ${project.statut}</span></span>
       <span class="hud-live-badge" style="border-color: var(--border-gold); color: var(--gold-light);"><span>DOMAINE : ${project.tag}</span></span>
-      ${project.roleDev ? `<span class="hud-live-badge" style="border-color: rgba(56, 189, 248, 0.4); color: #38BDF8;"><span>RÔLE : ${project.roleDev}</span></span>` : ""}
-      ${project.architecture ? `<span class="hud-live-badge" style="border-color: rgba(74, 222, 128, 0.4); color: #4ADE80;"><span>ORIENTATION : ${project.architecture}</span></span>` : ""}
-      ${project.devMetric ? `<span class="hud-live-badge" style="border-color: rgba(255, 30, 86, 0.4); color: #FF4D6D;"><span>OUTILS / AXES : ${project.devMetric}</span></span>` : ""}
+      ${project.roleDev ? `<span class="hud-live-badge" style="border-color: rgba(56, 189, 248, 0.4); color: #7DD3FC;"><span>RÔLE : ${project.roleDev}</span></span>` : ""}
     </div>
 
-    ${project.aventureExplication ? `
-      <div style="background: rgba(212, 175, 55, 0.06); border: 1px solid rgba(212, 175, 55, 0.25); border-left: 3px solid var(--gold-primary); padding: 1.1rem 1.3rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin-bottom: 1.6rem;">
-        <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--gold-warm); text-transform: uppercase; letter-spacing: 1.5px; display: block; margin-bottom: 6px; font-weight: 800;">// CONTEXTE DU PROJET :</span>
-        <p style="font-size: 0.95rem; color: #FFFFFF; line-height: 1.6; margin: 0;">${project.aventureExplication}</p>
-      </div>
-    ` : ""}
-
-    <div style="color: var(--text-main); font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.8rem;">
-      ${project.descriptionLongue}
+    <div class="case-study-grid">
+      ${project.probleme ? `<div class="case-study-block"><span>// PROBLÈME</span><p>${project.probleme}</p></div>` : ""}
+      ${project.objectif ? `<div class="case-study-block"><span>// OBJECTIF</span><p>${project.objectif}</p></div>` : ""}
+      ${project.architectureDetail ? `<div class="case-study-block case-study-full"><span>// ARCHITECTURE TECHNIQUE</span><p>${project.architectureDetail}</p></div>` : ""}
+      ${project.difficultes ? `<div class="case-study-block"><span>// DIFFICULTÉS RENCONTRÉES</span><p>${project.difficultes}</p></div>` : ""}
+      ${project.solutions ? `<div class="case-study-block"><span>// SOLUTIONS APPORTÉES</span><p>${project.solutions}</p></div>` : ""}
+      ${project.resultat ? `<div class="case-study-block case-study-full case-study-result"><span>// RÉSULTAT OBTENU</span><p>${project.resultat}</p></div>` : ""}
     </div>
 
-    <h4 style="font-family: var(--font-display); color: var(--gold-light); font-size: 1.15rem; margin-bottom: 0.8rem;">
-      Ce que couvre le projet :
+    <h4 style="font-family: var(--font-display); color: var(--gold-light); font-size: 1.1rem; margin-bottom: 0.75rem;">
+      Fonctionnalités &amp; livrables clés :
     </h4>
-    <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 1.8rem;">
+    <ul style="list-style: none; display: flex; flex-direction: column; gap: 9px; margin-bottom: 1.6rem;">
       ${project.pointsForts
         .map(
           (pt) => `
-        <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.95rem; color: var(--text-muted);">
-          <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--gold-primary); margin-top: 4px;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.92rem; color: var(--text-muted);">
+          <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--gold-primary); margin-top: 3px;"><polyline points="20 6 9 17 4 12"></polyline></svg>
           <span>${pt}</span>
         </li>
       `
@@ -2673,23 +2679,23 @@ function openProjectModal(projectId, config, trigger) {
         .join("")}
     </ul>
 
-    <h4 style="font-family: var(--font-display); color: var(--gold-light); font-size: 1.15rem; margin-bottom: 0.8rem;">
-      Technologies mobilisées :
+    <h4 style="font-family: var(--font-display); color: var(--gold-light); font-size: 1.1rem; margin-bottom: 0.75rem;">
+      Technologies utilisées :
     </h4>
-    <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 2rem;">
-      ${project.stack.map((s) => `<span class="tech-tag" style="padding: 6px 14px; font-size: 0.85rem;">${s}</span>`).join("")}
+    <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1.8rem;">
+      ${project.stack.map((s) => `<span class="tech-tag" style="padding: 6px 14px; font-size: 0.82rem;">${s}</span>`).join("")}
     </div>
 
-    <div style="display: flex; gap: 1rem; flex-wrap: wrap; border-top: 1px solid var(--border-subtle); padding-top: 1.5rem;">
+    <div style="display: flex; gap: 0.9rem; flex-wrap: wrap; border-top: 1px solid var(--border-subtle); padding-top: 1.4rem;">
       <a href="https://wa.me/${config.contacts.whatsappNumero}?text=${encodeURIComponent(
-    `Bonjour M. EZOUA, j'aimerais échanger au sujet de la mission ${project.titre}.`
+    `Bonjour M. EZOUA, j'aimerais échanger au sujet du projet ${project.titre}.`
   )}" target="_blank" rel="noopener" class="btn btn-gold">
-        <span>Discuter de cette mission sur WhatsApp</span>
+        <span>Discuter de ce projet</span>
         <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
       </a>
-      <a href="${config.contacts.github}" target="_blank" rel="noopener" class="btn btn-outline-gold">
+      <a href="${project.githubUrl || config.contacts.github}" target="_blank" rel="noopener" class="btn btn-outline-gold">
         <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-        <span>Consulter GitHub</span>
+        <span>Voir sur GitHub</span>
       </a>
       <button type="button" class="btn btn-outline-gold" data-modal-close>
         Fermer la fiche
@@ -2748,6 +2754,27 @@ function initContactForm(config) {
   const form = document.getElementById("portfolioContactForm");
   if (!form) return;
 
+  const confirmBox = document.getElementById("contactConfirmation");
+  const confirmReopen = document.getElementById("contactConfirmWhatsApp");
+  const confirmReset = document.getElementById("contactConfirmReset");
+  const reasonSelect = document.getElementById("senderReason");
+  const subjectInput = document.getElementById("senderSubject");
+  const honeypot = document.getElementById("senderWebsite");
+
+  // Pré-remplissage depuis les boutons « Demander un devis » de la section Services
+  document.querySelectorAll("[data-service-quote]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const serviceName = btn.getAttribute("data-service-quote");
+      if (reasonSelect) reasonSelect.value = "Prestation / Devis";
+      if (subjectInput && serviceName) subjectInput.value = `Demande de devis — ${serviceName}`;
+      if (confirmBox) confirmBox.hidden = true;
+      form.hidden = false;
+      const contactSec = document.getElementById("contact");
+      if (contactSec) contactSec.scrollIntoView({ behavior: REDUCED_MOTION ? "auto" : "smooth" });
+      setTimeout(() => document.getElementById("senderName")?.focus(), 450);
+    });
+  });
+
   const fields = [
     { el: document.getElementById("senderName"), err: document.getElementById("senderNameError"), msg: "Indiquez votre nom ou celui de votre entreprise." },
     { el: document.getElementById("senderMessage"), err: document.getElementById("senderMessageError"), msg: "Écrivez un message (au moins 10 caractères).", min: 10 }
@@ -2761,17 +2788,30 @@ function initContactForm(config) {
     return ok;
   }
 
-  // Validation inline au blur, puis en temps réel une fois l'erreur affichée (UX : inline-validation)
+  // Validation inline au blur, puis en temps réel une fois l'erreur affichée
   fields.forEach((f) => {
     if (!f.el) return;
     f.el.addEventListener("blur", () => { if (f.el.value.trim()) validateField(f); });
     f.el.addEventListener("input", () => { if (f.el.getAttribute("aria-invalid") === "true") validateField(f); });
   });
 
+  if (confirmReset) {
+    confirmReset.addEventListener("click", () => {
+      form.reset();
+      form.hidden = false;
+      if (confirmBox) confirmBox.hidden = true;
+      document.getElementById("senderName")?.focus();
+    });
+  }
+
   form.addEventListener("submit", (e) => {
     e.preventDefault();
+    // Protection anti-spam honeypot
+    if (honeypot && honeypot.value.trim() !== "") return;
+
     const nom = document.getElementById("senderName").value.trim();
-    const sujet = document.getElementById("senderSubject").value.trim();
+    const motif = reasonSelect ? reasonSelect.value : "Stage / Projet";
+    const sujet = subjectInput ? subjectInput.value.trim() : "";
     const message = document.getElementById("senderMessage").value.trim();
 
     const invalid = fields.filter((f) => f.el && !validateField(f));
@@ -2780,8 +2820,20 @@ function initContactForm(config) {
       return;
     }
 
-    const texteFinal = `Bonjour M. EZOUA,\nJe m'appelle ${nom}.\nObjet : ${sujet || "Opportunité de stage / projet"}\n\n${message}`;
+    const texteFinal = `Bonjour M. EZOUA,\nJe m'appelle ${nom}.\nMotif : ${motif}\nObjet : ${sujet || motif}\n\n${message}`;
     const whatsappUrl = `https://wa.me/${config.contacts.whatsappNumero}?text=${encodeURIComponent(texteFinal)}`;
+
+    if (confirmReopen) confirmReopen.href = whatsappUrl;
+    if (confirmBox) {
+      form.hidden = true;
+      confirmBox.hidden = false;
+    }
+    const toast = document.getElementById("toastNotice");
+    if (toast) {
+      toast.textContent = "Message préparé — ouverture de WhatsApp…";
+      toast.classList.add("show");
+      setTimeout(() => toast.classList.remove("show"), 3200);
+    }
     window.open(whatsappUrl, "_blank", "noopener");
   });
 }

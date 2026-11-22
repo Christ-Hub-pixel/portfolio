@@ -3995,3 +3995,249 @@ textarea.form-control {
     padding: 0.75rem;
   }
 }
+
+/* ==========================================================================
+   PHASE 2 AUDIT — ÉTUDES DE CAS PROJETS, HACKATHONS, SERVICES & CONTACT
+   ========================================================================== */
+.distinction-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.distinction-meta-item {
+  background: rgba(6, 8, 14, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  padding: 0.7rem 0.85rem;
+  min-width: 0;
+}
+
+.distinction-meta-item span {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--gold-warm);
+  margin-bottom: 3px;
+}
+
+.distinction-meta-item strong {
+  display: block;
+  font-size: 0.83rem;
+  font-weight: 600;
+  color: var(--text-main);
+  line-height: 1.45;
+}
+
+/* Études de cas dans la modale projet */
+.case-study-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.case-study-block {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: 3px solid var(--gold-primary);
+  border-radius: 10px;
+  padding: 0.9rem 1rem;
+  min-width: 0;
+}
+
+.case-study-full {
+  grid-column: 1 / -1;
+}
+
+.case-study-result {
+  background: rgba(212, 175, 55, 0.07);
+  border-color: rgba(212, 175, 55, 0.3);
+}
+
+.case-study-block span {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  color: var(--gold-warm);
+  margin-bottom: 5px;
+}
+
+.case-study-block p {
+  color: var(--text-main);
+  font-size: 0.88rem;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* Section Services */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.service-card {
+  background: var(--bg-glass-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.8rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.95rem;
+  backdrop-filter: blur(14px);
+  transition: transform 0.3s var(--ease-spring), border-color 0.3s ease, box-shadow 0.3s ease;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.service-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--gold-primary);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8), 0 0 30px var(--gold-glow);
+}
+
+.service-kicker {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  color: var(--gold-primary);
+  margin-bottom: 4px;
+}
+
+.service-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.25;
+}
+
+.service-desc {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+.service-deliverables {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0;
+  padding: 0.8rem 0;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  flex-grow: 1;
+}
+
+.service-deliverables li {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--gold-light);
+  padding-left: 14px;
+  position: relative;
+}
+
+.service-deliverables li::before {
+  content: "›";
+  position: absolute;
+  left: 0;
+  color: var(--gold-primary);
+  font-weight: 800;
+}
+
+.service-quote-btn {
+  align-self: flex-start;
+  margin-top: 0.25rem;
+}
+
+/* Select dark & Confirmation Contact */
+select.form-control {
+  appearance: auto;
+  background-color: #07090E;
+  color: var(--text-pure);
+}
+
+.contact-confirmation {
+  background: rgba(37, 211, 102, 0.08);
+  border: 1px solid rgba(37, 211, 102, 0.38);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.contact-confirmation[hidden] {
+  display: none;
+}
+
+.contact-confirm-badge {
+  display: inline-flex;
+  width: fit-content;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  color: #4ADE80;
+  background: rgba(74, 222, 128, 0.14);
+  border: 1px solid rgba(74, 222, 128, 0.4);
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+}
+
+.contact-confirmation h4 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: #FFFFFF;
+}
+
+.contact-confirmation p {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.contact-confirm-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 0.25rem;
+}
+
+@media (max-width: 768px) {
+  .case-study-grid {
+    grid-template-columns: 1fr;
+  }
+  .services-grid {
+    gap: 1rem;
+    margin-top: 1.6rem;
+  }
+  .service-card {
+    padding: 1.2rem 1rem;
+    border-radius: 18px;
+  }
+  .service-quote-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .service-card {
+    padding: 1rem 0.9rem;
+  }
+  .case-study-block {
+    padding: 0.8rem 0.85rem;
+  }
+}

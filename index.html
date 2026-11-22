@@ -69,6 +69,7 @@
           <li><a href="#hero" class="nav-link" id="navLinkHero">Accueil</a></li>
           <li><a href="#a-propos" class="nav-link" id="navLinkAPropos">À propos</a></li>
           <li><a href="#projets" class="nav-link" id="navLinkProjets">Projets</a></li>
+          <li><a href="#services" class="nav-link" id="navLinkServices">Services</a></li>
           <li><a href="#github-activite" class="nav-link" id="navLinkGitHub">GitHub</a></li>
           <li><a href="#contact" class="nav-link" id="navLinkContact">Contact</a></li>
         </ul>
@@ -535,7 +536,10 @@
         <p class="sr-only" id="projectsCount" aria-live="polite"></p>
         <div class="projects-grid" id="projectsGrid">
           <noscript>
-            <p style="color: var(--gold-light);">Veuillez activer JavaScript pour afficher la grille des projets.</p>
+            <article class="project-card"><div class="project-body"><h3 class="project-title">CodeLingo</h3><p class="project-summary">Application mobile Flutter &amp; Firebase d'apprentissage progressif de la programmation.</p></div></article>
+            <article class="project-card"><div class="project-body"><h3 class="project-title">AgriOS / KÔA AI</h3><p class="project-summary">Plateforme AgriTech en conception avec assistant intelligent pour les acteurs agricoles.</p></div></article>
+            <article class="project-card"><div class="project-body"><h3 class="project-title">Bread+ (Boulangerie de Babi)</h3><p class="project-summary">Prototype de réservation et gestion de commandes modélisé avec UML, PostgreSQL et Figma.</p></div></article>
+            <article class="project-card"><div class="project-body"><h3 class="project-title">Agrivo • Synerpay • Global Tech Synergie</h3><p class="project-summary">Projets AgriTech, concept Fintech mobile et création/déploiement de sites web (HTML/CSS/JS, WordPress, Cloudflare).</p></div></article>
           </noscript>
         </div>
 
@@ -699,21 +703,114 @@
       </div>
     </section>
 
-    <!-- Section 7 : Contact & Coordonnées Vérifiées (Épilogue : Sceller l'Alliance) -->
+    <!-- Section 8 : Services & Prestations (Collaborations & Freelance) -->
+    <section class="section" id="services">
+      <div class="container">
+        <span class="section-label">SERVICES // ACCOMPAGNEMENT &amp; RÉALISATIONS</span>
+        <h2 class="section-title">Comment je peux vous aider</h2>
+        <p class="section-desc">
+          En complément de ma recherche de stage en génie logiciel, j'interviens sur des besoins ciblés en développement mobile, web, prototypage UI/UX et mise en ligne.
+        </p>
+
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="service-head">
+              <span class="service-kicker">01 // MOBILE</span>
+              <h3>Applications mobiles Flutter</h3>
+            </div>
+            <p class="service-desc">Conception d'interfaces mobiles multiplateformes et développement de prototypes ou d'applications Flutter &amp; Dart reliées à Firebase ou une API.</p>
+            <ul class="service-deliverables">
+              <li>Écrans responsives Android &amp; iOS</li>
+              <li>Navigation fluide &amp; intégration Firebase</li>
+              <li>Code versionné sur GitHub</li>
+            </ul>
+            <button type="button" class="btn btn-outline-gold btn-sm service-quote-btn" data-service-quote="Application mobile Flutter">
+              <span>Demander un devis</span>
+            </button>
+          </article>
+
+          <article class="service-card">
+            <div class="service-head">
+              <span class="service-kicker">02 // WEB</span>
+              <h3>Sites web &amp; portfolios</h3>
+            </div>
+            <p class="service-desc">Création ou refonte de sites vitrines, portfolios et plateformes responsives rapides à charger sur mobile comme sur ordinateur.</p>
+            <ul class="service-deliverables">
+              <li>Intégration HTML/CSS/JS ou WordPress</li>
+              <li>Design responsive mobile-first</li>
+              <li>Optimisation SEO de base &amp; mise en ligne</li>
+            </ul>
+            <button type="button" class="btn btn-outline-gold btn-sm service-quote-btn" data-service-quote="Site web responsive">
+              <span>Demander un devis</span>
+            </button>
+          </article>
+
+          <article class="service-card">
+            <div class="service-head">
+              <span class="service-kicker">03 // PRODUIT</span>
+              <h3>UI/UX &amp; Prototypage Figma</h3>
+            </div>
+            <p class="service-desc">Cadrage des parcours utilisateurs, maquettes interactives et modélisation fonctionnelle (UML / données) avant développement.</p>
+            <ul class="service-deliverables">
+              <li>Maquettes cliquables Figma</li>
+              <li>Parcours client structuré</li>
+              <li>Schéma de données prêt à coder</li>
+            </ul>
+            <button type="button" class="btn btn-outline-gold btn-sm service-quote-btn" data-service-quote="UI/UX et prototypage Figma">
+              <span>Demander un devis</span>
+            </button>
+          </article>
+
+          <article class="service-card">
+            <div class="service-head">
+              <span class="service-kicker">04 // IA &amp; OUTILS</span>
+              <h3>Prototypage IA &amp; scripts Python</h3>
+            </div>
+            <p class="service-desc">Exploration de cas d'usage IA, conception d'assistants ciblés et scripts Python d'automatisation ou d'analyse de données.</p>
+            <ul class="service-deliverables">
+              <li>Cadrage &amp; prototype d'assistant IA</li>
+              <li>Scripts Python documentés</li>
+              <li>Guide d'utilisation clair</li>
+            </ul>
+            <button type="button" class="btn btn-outline-gold btn-sm service-quote-btn" data-service-quote="Prototypage IA / Script Python">
+              <span>Demander un devis</span>
+            </button>
+          </article>
+
+          <article class="service-card">
+            <div class="service-head">
+              <span class="service-kicker">05 // CLOUD</span>
+              <h3>Déploiement &amp; maintenance</h3>
+            </div>
+            <p class="service-desc">Mise en ligne propre de vos pages statiques ou sites existants avec GitHub Pages, Cloudflare, gestion DNS et suivi technique.</p>
+            <ul class="service-deliverables">
+              <li>Configuration GitHub / Cloudflare</li>
+              <li>Corrections responsives &amp; mises à jour</li>
+              <li>Suivi technique réactif</li>
+            </ul>
+            <button type="button" class="btn btn-outline-gold btn-sm service-quote-btn" data-service-quote="Déploiement et maintenance web">
+              <span>Demander un devis</span>
+            </button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 9 : Contact & Coordonnées Vérifiées (Épilogue : Sceller l'Alliance) -->
     <section class="section" id="contact">
       <div class="container">
-        <span class="section-label">ÉPILOGUE // SCELLER L'ALLIANCE</span>
-        <h2 class="section-title">Initier la Transmission pour la Prochaine Quête</h2>
+        <span class="section-label">ÉPILOGUE // CONTACT &amp; OPPORTUNITÉS</span>
+        <h2 class="section-title">Discutons de votre stage ou projet</h2>
         <p class="section-desc">
-          Toute odyssée a besoin d'équipages audacieux et de nouveaux horizons. Disponible pour un stage en génie logiciel, une collaboration technique ou la construction de solutions à fort impact.
+          Disponible pour un stage en génie logiciel, une collaboration technique ou une prestation ciblée. Choisissez votre motif ci-dessous pour initier l'échange rapidement.
         </p>
 
         <div class="contact-grid">
           
-          <!-- Carte Coordonnées Directes -->
+          <!-- Carte Coordonnées Directes (1 seul numéro pro principal) -->
           <div class="contact-card-direct">
-            <h3 style="font-family: var(--font-display); color: #FFFFFF; font-size: 1.4rem; font-weight: 900;">
-              Canaux Officiels
+            <h3 style="font-family: var(--font-display); color: #FFFFFF; font-size: 1.35rem; font-weight: 900;">
+              Canaux Professionnels
             </h3>
 
             <!-- WhatsApp -->
@@ -723,7 +820,7 @@
                   <svg class="svg-icon" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
                 </div>
                 <div>
-                  <div class="contact-label">WhatsApp Direct</div>
+                  <div class="contact-label">WhatsApp Professionnel</div>
                   <div class="contact-value" data-bind="telephone1Affiche">+225 01 61 40 70 64</div>
                 </div>
               </div>
@@ -732,35 +829,18 @@
               </a>
             </div>
 
-            <!-- Téléphone 1 -->
+            <!-- Téléphone Principal Unique -->
             <div class="contact-item">
               <div class="contact-info-left">
                 <div class="contact-icon-box">
                   <svg class="svg-icon" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
                 </div>
                 <div>
-                  <div class="contact-label">Téléphone 1 (Principal)</div>
+                  <div class="contact-label">Téléphone Principal</div>
                   <div class="contact-value" id="phone1Display" data-bind="telephone1Affiche">+225 01 61 40 70 64</div>
                 </div>
               </div>
-              <button type="button" class="copy-btn" data-copy-target="phone1Display" aria-label="Copier le numéro principal">
-                <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-                <span>Copier</span>
-              </button>
-            </div>
-
-            <!-- Téléphone 2 -->
-            <div class="contact-item">
-              <div class="contact-info-left">
-                <div class="contact-icon-box">
-                  <svg class="svg-icon" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
-                </div>
-                <div>
-                  <div class="contact-label">Téléphone 2 (Secondaire)</div>
-                  <div class="contact-value" id="phone2Display" data-bind="telephone2Affiche">+225 07 97 51 51 90</div>
-                </div>
-              </div>
-              <button type="button" class="copy-btn" data-copy-target="phone2Display" aria-label="Copier le numéro secondaire">
+              <button type="button" class="copy-btn" data-copy-target="phone1Display" aria-label="Copier le numéro professionnel">
                 <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
                 <span>Copier</span>
               </button>
@@ -773,7 +853,7 @@
                   <svg class="svg-icon" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                 </div>
                 <div>
-                  <div class="contact-label">Email Personnel</div>
+                  <div class="contact-label">Email Direct</div>
                   <div class="contact-value" id="emailDisplay" data-bind="email">ez.emian77@gmail.com</div>
                 </div>
               </div>
@@ -791,20 +871,33 @@
               </a>
               <a href="https://linkedin.com/in/emian-ezoua" target="_blank" rel="noopener" class="btn btn-outline-gold" style="flex: 1;" data-link="linkedin">
                 <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                <span>LinkedIn : <strong data-bind="linkedinPseudo">emian-ezoua</strong> • 500+</span>
+                <span>LinkedIn : <strong data-bind="linkedinPseudo">emian-ezoua</strong></span>
               </a>
             </div>
 
           </div>
 
-          <!-- Formulaire Express vers WhatsApp -->
+          <!-- Formulaire Express vers WhatsApp avec Motif, Honeypot & Confirmation -->
           <div class="contact-form-box">
-            <h3 class="form-title">Envoyer un Message Rapide</h3>
+            <h3 class="form-title">Envoyer un Message Structuré</h3>
             <p class="form-desc">
-              Transmettez votre proposition de stage ou de projet : votre message sera pré-rempli sur WhatsApp pour un échange instantané.
+              Sélectionnez votre motif : votre message sera validé et pré-rempli sur WhatsApp pour une réponse rapide.
             </p>
 
             <form id="portfolioContactForm" novalidate>
+              <!-- Champ honeypot anti-spam -->
+              <input type="text" id="senderWebsite" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute; left:-9999px; width:1px; height:1px; opacity:0;">
+
+              <div class="form-group">
+                <label for="senderReason" class="form-label">MOTIF DE CONTACT</label>
+                <select id="senderReason" name="reason" class="form-control">
+                  <option value="Stage en génie logiciel">Stage en génie logiciel</option>
+                  <option value="Emploi / Opportunité junior">Emploi / Opportunité junior</option>
+                  <option value="Prestation / Devis">Prestation / Devis</option>
+                  <option value="Partenariat / Collaboration">Partenariat / Collaboration</option>
+                </select>
+              </div>
+
               <div class="form-group">
                 <label for="senderName" class="form-label">VOTRE NOM / ENTREPRISE <span aria-hidden="true">*</span></label>
                 <input type="text" id="senderName" name="name" autocomplete="name" class="form-control" placeholder="Ex: Jean Kouassi — Entreprise Tech" required aria-describedby="senderNameError">
@@ -812,22 +905,33 @@
               </div>
 
               <div class="form-group">
-                <label for="senderSubject" class="form-label">OBJET / TYPE D'OPPORTUNITÉ</label>
-                <input type="text" id="senderSubject" class="form-control" placeholder="Ex: Offre de stage en génie logiciel, Projet mobile...">
+                <label for="senderSubject" class="form-label">OBJET PRÉCIS</label>
+                <input type="text" id="senderSubject" class="form-control" placeholder="Ex: Offre de stage L2, Application Flutter, Site web...">
               </div>
 
               <div class="form-group">
                 <label for="senderMessage" class="form-label">VOTRE MESSAGE <span aria-hidden="true">*</span></label>
-                <textarea id="senderMessage" name="message" class="form-control" placeholder="Présentez brièvement la mission ou votre besoin technique..." required aria-describedby="senderMessageHelp senderMessageError"></textarea>
-                <p class="form-help" id="senderMessageHelp">Les champs marqués * sont obligatoires. Le message s'ouvrira dans WhatsApp.</p>
+                <textarea id="senderMessage" name="message" class="form-control" placeholder="Présentez brièvement le contexte, le délai ou votre besoin technique..." required aria-describedby="senderMessageHelp senderMessageError"></textarea>
+                <p class="form-help" id="senderMessageHelp">Champs * obligatoires. Vos informations ne sont pas stockées sur un serveur tiers.</p>
                 <p class="form-error" id="senderMessageError" role="alert"></p>
               </div>
 
               <button type="submit" class="btn btn-gold" style="width: 100%;" id="btnSubmitContact">
-                <span>Envoyer le Message sur WhatsApp</span>
+                <span>Préparer et ouvrir sur WhatsApp</span>
                 <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
               </button>
             </form>
+
+            <!-- Confirmation après envoi -->
+            <div id="contactConfirmation" class="contact-confirmation" hidden role="status" aria-live="polite">
+              <div class="contact-confirm-badge">MESSAGE PRÊT</div>
+              <h4>Votre message a été préparé pour WhatsApp</h4>
+              <p>Si la fenêtre WhatsApp ne s'est pas ouverte automatiquement, utilisez le bouton ci-dessous pour lancer la conversation directement.</p>
+              <div class="contact-confirm-actions">
+                <a id="contactConfirmWhatsApp" href="https://wa.me/2250161407064" target="_blank" rel="noopener" class="btn btn-whatsapp btn-sm">Ouvrir WhatsApp</a>
+                <button type="button" id="contactConfirmReset" class="btn btn-outline-gold btn-sm">Nouveau message</button>
+              </div>
+            </div>
           </div>
 
         </div>

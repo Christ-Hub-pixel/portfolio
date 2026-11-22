@@ -208,21 +208,21 @@ function initThreeJSScene() {
   }
   const maxAnisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy ? renderer.capabilities.getMaxAnisotropy() : 1);
 
-  // --- ÉCLAIRAGE STELLAIRE (100% Rouge Vif & Rouge Pur) ---
-  const ambientLight = new THREE.AmbientLight(0x200408, 1.55);
+  // --- ÉCLAIRAGE STELLAIRE (Mélange Rouge Vif & Or Doré) ---
+  const ambientLight = new THREE.AmbientLight(0x22060A, 1.6);
   scene.add(ambientLight);
 
-  // Éclairage hémisphérique Rouge Vif / Cramoisi Profond
-  const hemiLight = new THREE.HemisphereLight(0xFF2233, 0x5A0008, 1.12);
+  // Éclairage hémisphérique Or Doré / Rouge Profond
+  const hemiLight = new THREE.HemisphereLight(0xF5C842, 0x6A000C, 1.18);
   scene.add(hemiLight);
 
-  // Lumière Cœur Galactique (Rouge Vif)
-  const coreLight = new THREE.PointLight(0xFF1428, 4.6, 125);
+  // Lumière Cœur Galactique (Or Chaud)
+  const coreLight = new THREE.PointLight(0xF5B82E, 4.6, 125);
   coreLight.position.set(0, 0, 5);
   scene.add(coreLight);
 
-  // Lumière Principale Directionnelle Rouge Éclatant
-  const dirLight = new THREE.DirectionalLight(0xFF5566, 2.3);
+  // Lumière Principale Directionnelle Or pour des reflets dorés sur le torus rouge
+  const dirLight = new THREE.DirectionalLight(0xFFD966, 2.5);
   dirLight.position.set(16, 22, 26);
   scene.add(dirLight);
 
@@ -499,10 +499,10 @@ function initThreeJSScene() {
   const ringSegments = isSmallScreen ? 72 : (isUltraHD ? 160 : 112);
   const accretionGeo = new THREE.RingGeometry(11.0, 16.5, ringSegments);
   const accretionMat = new THREE.MeshBasicMaterial({
-    color: 0xE60E20,
+    color: 0xD4AF37,
     side: THREE.DoubleSide,
     transparent: true,
-    opacity: 0.24,
+    opacity: 0.22,
     blending: THREE.AdditiveBlending
   });
   const accretionRing = new THREE.Mesh(accretionGeo, accretionMat);
@@ -611,7 +611,7 @@ function initThreeJSScene() {
     {
       key: "ai",
       title: "KÔA NEURAL AI",
-      role: "PYTORCH • VISION • VOICE",
+      role: "IA • ASSISTANTS • PROTOTYPES",
       color: "#FF1E56",
       ringColor: 0xFF1E56,
       radius: isSmallScreen ? 1.9 : 2.45,
@@ -733,9 +733,9 @@ function initThreeJSScene() {
   const starPositions = new Float32Array(starCount * 3);
   const starColors = new Float32Array(starCount * 3);
   const paletteColors = [
-    new THREE.Color(0xFFE4E6),
-    new THREE.Color(0xFF1E32),
-    new THREE.Color(0xE60018),
+    new THREE.Color(0xFFF0C2),
+    new THREE.Color(0xF5C242),
+    new THREE.Color(0xFF1428),
     new THREE.Color(0xFF0000)
   ];
 
@@ -793,7 +793,7 @@ function initThreeJSScene() {
   }
 
   const shootingCount = isSmallScreen ? 3 : 5;
-  const shootingColors = [0xFF1E32, 0xE60018, 0xFF0000];
+  const shootingColors = [0xF5C242, 0xFF1428, 0xFF0000];
   for (let i = 0; i < shootingCount; i++) {
     const geo = new THREE.BufferGeometry();
     const positions = new Float32Array(6);
@@ -834,25 +834,64 @@ function initThreeJSScene() {
     2,
     3
   );
+  // Texture procédurale fusionnant Rouge Vif et veines d'Or Doré sur le torus
+  function createRedGoldTorusTexture() {
+    const c = document.createElement("canvas");
+    c.width = 512 * texScale;
+    c.height = 256 * texScale;
+    const ctx = c.getContext("2d");
+    ctx.scale(texScale, texScale);
+
+    const grad = ctx.createLinearGradient(0, 0, 512, 256);
+    grad.addColorStop(0.0, "#B80014");
+    grad.addColorStop(0.22, "#FF1428");
+    grad.addColorStop(0.42, "#D4AF37");
+    grad.addColorStop(0.55, "#F5C842");
+    grad.addColorStop(0.72, "#EE0C20");
+    grad.addColorStop(0.90, "#C8921E");
+    grad.addColorStop(1.0, "#B80014");
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, 512, 256);
+
+    // Veines dorées diagonales subtiles
+    ctx.strokeStyle = "rgba(255, 224, 115, 0.38)";
+    ctx.lineWidth = 4;
+    for (let x = -256; x < 768; x += 48) {
+      ctx.beginPath();
+      ctx.moveTo(x, 0);
+      ctx.lineTo(x + 256, 256);
+      ctx.stroke();
+    }
+
+    const tex = new THREE.CanvasTexture(c);
+    tex.wrapS = THREE.RepeatWrapping;
+    tex.wrapT = THREE.RepeatWrapping;
+    tex.repeat.set(3, 1);
+    tex.anisotropy = maxAnisotropy;
+    tex.needsUpdate = true;
+    return tex;
+  }
+
   const torusMaterial = new THREE.MeshStandardMaterial({
-    color: 0xFF1428,
-    roughness: 0.2,
-    metalness: 0.72,
-    emissive: 0xA80010,
-    emissiveIntensity: 0.36,
+    map: createRedGoldTorusTexture(),
+    color: 0xFFFFFF,
+    roughness: 0.18,
+    metalness: 0.74,
+    emissive: 0x7A1008,
+    emissiveIntensity: 0.32,
     transparent: true,
-    opacity: 0.94,
+    opacity: 0.95,
     side: THREE.DoubleSide
   });
   const torusMesh = new THREE.Mesh(torusGeometry, torusMaterial);
   relicGroup.add(torusMesh);
 
-  // 2. Grillage d'énergie Rouge Vif (Wireframe holographique en surimpression)
+  // 2. Grillage d'énergie Or Doré sur le corps Rouge Vif
   const torusWireMat = new THREE.MeshBasicMaterial({
-    color: 0xFF2E3D,
+    color: 0xF5C542,
     wireframe: true,
     transparent: true,
-    opacity: 0.34,
+    opacity: 0.44,
     blending: THREE.AdditiveBlending
   });
   const torusWireMesh = new THREE.Mesh(torusGeometry, torusWireMat);
@@ -865,7 +904,7 @@ function initThreeJSScene() {
     roughness: 0.1,
     metalness: 0.3,
     emissive: 0xD40014,
-    emissiveIntensity: 0.92,
+    emissiveIntensity: 0.9,
     transparent: true,
     opacity: 0.92,
     flatShading: true
@@ -873,15 +912,15 @@ function initThreeJSScene() {
   const crystalMesh = new THREE.Mesh(crystalGeo, crystalMat);
   relicGroup.add(crystalMesh);
 
-  // Halo plasma : Rouge Vif → Cramoisi → Rouge Pur à l'extrémité
+  // Halo plasma : Or Doré → Rouge Vif → Rouge Pur à l'extrémité
   function createCoreAuraSprite() {
     const c = document.createElement("canvas");
     c.width = 512;
     c.height = 512;
     const ctx = c.getContext("2d");
     const g = ctx.createRadialGradient(256, 256, 12, 256, 256, 250);
-    g.addColorStop(0, "rgba(255, 22, 40, 0.42)");
-    g.addColorStop(0.38, "rgba(220, 0, 22, 0.36)");
+    g.addColorStop(0, "rgba(245, 198, 66, 0.42)");
+    g.addColorStop(0.36, "rgba(255, 20, 40, 0.36)");
     g.addColorStop(0.72, "rgba(255, 0, 0, 0.28)");
     g.addColorStop(1, "rgba(0, 0, 0, 0)");
     ctx.fillStyle = g;
@@ -900,12 +939,12 @@ function initThreeJSScene() {
   }
   relicGroup.add(createCoreAuraSprite());
 
-  // 4. Cage synaptique Rouge Vif + Cœur Rouge Éclatant
+  // 4. Cage synaptique Rouge Vif + Cœur Or Doré
   const crystalWireMat = new THREE.MeshBasicMaterial({
     color: 0xFF2A3B,
     wireframe: true,
     transparent: true,
-    opacity: 0.58,
+    opacity: 0.56,
     blending: THREE.AdditiveBlending
   });
   const crystalWireMesh = new THREE.Mesh(crystalGeo, crystalWireMat);
@@ -913,23 +952,23 @@ function initThreeJSScene() {
 
   const innerCoreGeo = new THREE.OctahedronGeometry(2.55, 0);
   const innerCoreMat = new THREE.MeshBasicMaterial({
-    color: 0xFF3B4A,
+    color: 0xF5C842,
     wireframe: true,
     transparent: true,
-    opacity: 0.68,
+    opacity: 0.72,
     blending: THREE.AdditiveBlending
   });
   const innerCoreMesh = new THREE.Mesh(innerCoreGeo, innerCoreMat);
   crystalMesh.add(innerCoreMesh);
 
-  // 5. Anneaux gyroscopiques orbitaux (Rouge Vif → Cramoisi → Rouge Pur à l'extérieur)
+  // 5. Anneaux gyroscopiques orbitaux (Or Doré → Rouge Vif → Rouge Pur à l'extérieur)
   const orbitalRadialSegs = isSmallScreen ? 12 : (isUltraHD ? 24 : 16);
   const orbitalTubularSegs = isSmallScreen ? 96 : (isUltraHD ? 220 : 140);
   const ring1Geo = new THREE.TorusGeometry(14.6, 0.14, orbitalRadialSegs, orbitalTubularSegs);
   const ring1Mat = new THREE.MeshBasicMaterial({
-    color: 0xFF1A2B,
+    color: 0xF0BD38,
     transparent: true,
-    opacity: 0.6,
+    opacity: 0.62,
     blending: THREE.AdditiveBlending
   });
   const ring1 = new THREE.Mesh(ring1Geo, ring1Mat);
@@ -939,7 +978,7 @@ function initThreeJSScene() {
 
   const ring2Geo = new THREE.TorusGeometry(16.5, 0.14, orbitalRadialSegs, orbitalTubularSegs);
   const ring2Mat = new THREE.MeshBasicMaterial({
-    color: 0xE00018,
+    color: 0xEE1122,
     transparent: true,
     opacity: 0.62,
     blending: THREE.AdditiveBlending
@@ -960,9 +999,9 @@ function initThreeJSScene() {
   ring3.rotation.x = Math.PI / 2.2;
   relicGroup.add(ring3);
 
-  // 6. Balises d'énergie orbitales (Rouge Vif & Rouge Pur)
+  // 6. Balises d'énergie orbitales (Or Doré, Rouge Vif, Rouge Pur)
   const satGeo = new THREE.SphereGeometry(0.38, isUltraHD ? 24 : 16, isUltraHD ? 24 : 16);
-  const satGold = new THREE.Mesh(satGeo, new THREE.MeshBasicMaterial({ color: 0xFF2233 }));
+  const satGold = new THREE.Mesh(satGeo, new THREE.MeshBasicMaterial({ color: 0xFFDF00 }));
   const satRed = new THREE.Mesh(satGeo, new THREE.MeshBasicMaterial({ color: 0xEE0018 }));
   const satCyan = new THREE.Mesh(satGeo, new THREE.MeshBasicMaterial({ color: 0xFF0000 }));
   relicGroup.add(satGold);
@@ -2462,44 +2501,71 @@ function initSkills(config) {
   const container = document.getElementById("skillsCategorized");
   if (!container || !config.competences) return;
 
-  const cats = [
-    {
-      titre: "Mobile Cross-Platform & Client",
-      iconSvg: `<svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>`,
-      items: ["Flutter", "Dart", "Développement mobile", "Conception d’interfaces"]
-    },
-    {
-      titre: "Backend, Données & Architecture",
-      iconSvg: `<svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>`,
-      items: ["Python", "JavaScript", "PostgreSQL", "Modélisation UML", "API REST", "Firebase"]
-    },
-    {
-      titre: "Intelligence Artificielle & Vision",
-      iconSvg: `<svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M8 12h8"></path><path d="M12 8v8"></path></svg>`,
-      items: ["Exploration de l’intelligence artificielle", "Projets numériques", "Prototypage"]
-    },
-    {
-      titre: "DevOps, Outils & Méthodes",
-      iconSvg: `<svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>`,
-      items: ["Git / GitHub", "VS Code", "Figma", "Cloudflare", "WordPress"]
-    }
-  ];
+  const iconMap = {
+    mobile: `<svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>`,
+    web: `<svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>`,
+    backend: `<svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>`,
+    donnees: `<svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>`,
+    ia: `<svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M8 12h8"></path><path d="M12 8v8"></path></svg>`
+  };
 
+  const categories = config.competences.categories || [];
   container.innerHTML = "";
-  cats.forEach((c) => {
+
+  categories.forEach((cat) => {
     const box = document.createElement("div");
-    box.className = "skill-cat-box";
+    box.className = "skill-cat-box skill-cat-detailed";
+    const iconSvg = iconMap[cat.id] || iconMap.backend;
     box.innerHTML = `
-      <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1rem;">
-        <span style="color: var(--gold-primary); display: inline-flex;">${c.iconSvg}</span>
-        <h3 class="skill-cat-title" style="margin-bottom: 0;">${c.titre}</h3>
+      <div class="skill-cat-head">
+        <span class="skill-cat-icon">${iconSvg}</span>
+        <div>
+          <h3 class="skill-cat-title" style="margin-bottom: 0; border-bottom: none; padding-bottom: 0;">${cat.titre}</h3>
+          <p class="skill-cat-sub">${cat.sousTitre || ""}</p>
+        </div>
       </div>
-      <div class="skill-chips-wrap">
-        ${c.items.map((it) => `<span class="skill-chip">${it}</span>`).join("")}
+      <div class="skill-proof-list">
+        ${cat.items
+          .map((item) => {
+            const isExternal = item.preuveHref && item.preuveHref.startsWith("http");
+            const attrs = isExternal ? `target="_blank" rel="noopener"` : "";
+            return `
+              <div class="skill-proof-item">
+                <div class="skill-proof-top">
+                  <strong class="skill-proof-name">${item.nom}</strong>
+                  <span class="skill-level-badge level-${item.niveauCode || "solid"}">${item.niveau}</span>
+                </div>
+                <p class="skill-proof-desc">${item.construit}</p>
+                <a class="skill-proof-link" href="${item.preuveHref || "#projets"}" ${attrs}>
+                  <span>${item.preuve}</span>
+                  <span aria-hidden="true">${isExternal ? "↗" : "→"}</span>
+                </a>
+              </div>
+            `;
+          })
+          .join("")}
       </div>
     `;
     container.appendChild(box);
   });
+
+  if (Array.isArray(config.competences.enApprentissage) && config.competences.enApprentissage.length) {
+    const learningBox = document.createElement("div");
+    learningBox.className = "skill-cat-box skill-learning-box";
+    learningBox.innerHTML = `
+      <div class="skill-cat-head">
+        <span class="skill-cat-icon"><svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg></span>
+        <div>
+          <h3 class="skill-cat-title" style="margin-bottom: 0; border-bottom: none; padding-bottom: 0;">En cours d'apprentissage</h3>
+          <p class="skill-cat-sub">Objectifs techniques actuels pour passer au niveau supérieur</p>
+        </div>
+      </div>
+      <div class="skill-chips-wrap">
+        ${config.competences.enApprentissage.map((topic) => `<span class="skill-chip skill-chip-learning">${topic}</span>`).join("")}
+      </div>
+    `;
+    container.appendChild(learningBox);
+  }
 }
 
 /**

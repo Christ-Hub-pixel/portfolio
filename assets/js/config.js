@@ -76,38 +76,169 @@ const PORTFOLIO_CONFIG = {
     {
       id: "hackathon-iit-2026",
       place: "2ᵉ Place",
-      missionCode: "DÉFI // 01",
+      missionCode: "HACKATHON // 01",
       titre: "Hackathon IIT 2026",
-      organisation: "Institut Ivoirien de Technologie",
+      organisation: "Institut Ivoirien de Technologie (Grand-Bassam)",
       annee: "2026",
       badge: "2ᵉ Place • Argent",
-      epreuve: "48 Heures d'Innovation & Prototypage",
-      description: "Confrontation dans l'arène de l'Institut Ivoirien de Technologie. Prototypage sous haute contrainte, architecture logicielle résiliente et coordination d'équipe pour décrocher la 2ᵉ place sur le podium."
+      epreuve: "48h de prototypage en équipe",
+      description: "Participation au hackathon organisé à l'Institut Ivoirien de Technologie : cadrage du problème, conception d'un prototype fonctionnel sous contrainte de temps et présentation devant le jury pour décrocher la 2ᵉ place."
     },
     {
       id: "vibeathon-2026",
       place: "3ᵉ Place",
-      missionCode: "DÉFI // 02",
+      missionCode: "HACKATHON // 02",
       titre: "VIBEATHON 2026",
-      organisation: "Challenge Technologique National",
+      organisation: "Challenge Technologique",
       annee: "2026",
       badge: "3ᵉ Place • Bronze",
-      epreuve: "Sprint National d'Ingénierie",
-      description: "Défi d'ingénierie national face à des équipes aguerries. Conception d'une solution numérique innovante, présentation devant jury d'experts et consécration à la 3ᵉ place."
+      epreuve: "Sprint d'ingénierie & pitch jury",
+      description: "Conception rapide d'une solution numérique en équipe, développement du prototype et démonstration devant un jury technique pour obtenir la 3ᵉ place."
     }
   ],
 
-  // Compétences techniques détaillées par catégorie (L'Arsenal)
+  // Compétences techniques détaillées en 5 catégories (niveaux réels & preuves projets)
   competences: {
     developpement: ["Flutter", "Dart", "Python", "JavaScript", "HTML / CSS"],
     backendDonnees: ["Firebase", "PostgreSQL", "API REST", "Modélisation UML"],
     outilsCloud: ["Git / GitHub", "Figma (UI/UX)", "VS Code", "Cloudflare", "WordPress"],
-    specialites: ["Intelligence Artificielle (IA)", "UI/UX Design", "Architecture logicielle", "Déploiement web"],
+    specialites: ["Concepts IA", "UI/UX Design", "Architecture logicielle", "Déploiement web"],
+    categories: [
+      {
+        id: "mobile",
+        titre: "Mobile",
+        sousTitre: "Applications multiplateformes & UI mobile",
+        items: [
+          {
+            nom: "Flutter",
+            niveau: "Pratique régulière",
+            niveauCode: "core",
+            construit: "Écrans mobiles responsives, navigation multi-vues, composants réutilisables et prototypes fonctionnels.",
+            preuve: "Projet : CodeLingo",
+            preuveHref: "#projets"
+          },
+          {
+            nom: "Dart",
+            niveau: "Pratique régulière",
+            niveauCode: "core",
+            construit: "Logique applicative Flutter, gestion d'état et structuration de modèles de données.",
+            preuve: "Dépôt : codelingo6",
+            preuveHref: "https://github.com/Christ-Hub-pixel/codelingo6"
+          }
+        ]
+      },
+      {
+        id: "web",
+        titre: "Web",
+        sousTitre: "Interfaces modernes & déploiement",
+        items: [
+          {
+            nom: "HTML5 & CSS3",
+            niveau: "Pratique régulière",
+            niveauCode: "core",
+            construit: "Sites vitrines et portfolios responsives, animations CSS et mise en page adaptée mobile/desktop.",
+            preuve: "Projet : Portfolio & YODO",
+            preuveHref: "https://github.com/Christ-Hub-pixel/YODO"
+          },
+          {
+            nom: "JavaScript",
+            niveau: "Intermédiaire",
+            niveauCode: "mid",
+            construit: "Interactions dynamiques, filtres, modales accessibles, validation de formulaires et intégration WebGL.",
+            preuve: "Projet : Portfolio & Global Tech Synergie",
+            preuveHref: "#projets"
+          },
+          {
+            nom: "WordPress & Cloudflare",
+            niveau: "Intermédiaire",
+            niveauCode: "mid",
+            construit: "Adaptation de sites web, mise en ligne, DNS et maintenance de présence numérique.",
+            preuve: "Expérience : Global Tech Synergie",
+            preuveHref: "#projets"
+          }
+        ]
+      },
+      {
+        id: "backend",
+        titre: "Backend",
+        sousTitre: "Logique serveur, scripts & conception",
+        items: [
+          {
+            nom: "Python",
+            niveau: "Intermédiaire",
+            niveauCode: "mid",
+            construit: "Scripts d'automatisation, analyse comparative de données et logique métier backend.",
+            preuve: "Dépôt : AnalyseComparativeMarche",
+            preuveHref: "https://github.com/Christ-Hub-pixel/AnalyseComparativeMarche"
+          },
+          {
+            nom: "API REST & UML",
+            niveau: "Bases solides",
+            niveauCode: "solid",
+            construit: "Conception de endpoints REST, diagrammes de cas d'utilisation / classes et cahiers fonctionnels.",
+            preuve: "Projets : Bread+ & Synerpay",
+            preuveHref: "#projets"
+          }
+        ]
+      },
+      {
+        id: "donnees",
+        titre: "Données",
+        sousTitre: "Modélisation relationnelle & services cloud",
+        items: [
+          {
+            nom: "PostgreSQL",
+            niveau: "Bases solides",
+            niveauCode: "solid",
+            construit: "Schémas relationnels normalisés, requêtes SQL et structuration des données métier.",
+            preuve: "Formation IIT & Bread+ / Synerpay",
+            preuveHref: "#a-propos"
+          },
+          {
+            nom: "Firebase",
+            niveau: "Intermédiaire",
+            niveauCode: "mid",
+            construit: "Authentification, stockage de données et synchronisation pour prototypes mobiles Flutter.",
+            preuve: "Projet : CodeLingo",
+            preuveHref: "#projets"
+          }
+        ]
+      },
+      {
+        id: "ia",
+        titre: "Intelligence Artificielle",
+        sousTitre: "Usages concrets, assistants & exploration",
+        items: [
+          {
+            nom: "Concepts IA & Prompting",
+            niveau: "En exploration active",
+            niveauCode: "explore",
+            construit: "Conception de compétences pour assistants IA, cadrage de cas d'usage et intégration d'outils IA.",
+            preuve: "Dépôt : skill-IA",
+            preuveHref: "https://github.com/Christ-Hub-pixel/skill-IA"
+          },
+          {
+            nom: "Prototypage produit IA",
+            niveau: "En exploration active",
+            niveauCode: "explore",
+            construit: "Conception d'un assistant numérique d'aide à la décision agricole et parcours utilisateur associé.",
+            preuve: "Projet : AgriOS / KÔA AI",
+            preuveHref: "#projets"
+          }
+        ]
+      }
+    ],
+    enApprentissage: [
+      "FastAPI & architectures backend Python",
+      "Tests automatisés (unitaires & intégration)",
+      "Intégration d'API IA en production",
+      "CI/CD & déploiement cloud avancé"
+    ],
     langues: [
       { langue: "Français", niveau: "Courant / Langue Maternelle" },
-      { langue: "Anglais", niveau: "Intermédiaire / Anglais Technique & Docs" }
+      { langue: "Anglais", niveau: "Intermédiaire / Technique & Documentation" }
     ],
-    atouts: ["Autonome", "Curieux", "Esprit d'équipe", "Créatif", "Apprentissage rapide", "Initiative"]
+    atouts: ["Autonomie", "Curiosité", "Esprit d'équipe", "Créativité", "Apprentissage rapide", "Sens de l'initiative"]
   },
 
   // Projets majeurs officiels du CV (Les Grandes Expéditions & Artefacts)

@@ -6,6 +6,14 @@
  * Format : L'Odyssée Technologique d'Esli (Aventure & Journal de bord d'ingénierie)
  */
 
+const _secDecode = (val) => {
+  try {
+    return typeof atob === "function" ? atob(val) : "";
+  } catch (_e) {
+    return "";
+  }
+};
+
 const PORTFOLIO_CONFIG = {
   // Identité personnelle & Titre
   personne: {
@@ -37,15 +45,15 @@ const PORTFOLIO_CONFIG = {
     ]
   },
 
-  // Coordonnées & Liens externes officiels
+  // Coordonnées & Liens externes officiels (obfusqués anti-scraping)
   contacts: {
-    telephone1: "+225 0161407064",
-    telephone1Affiche: "+225 01 61 40 70 64",
-    telephone2: "+225 0797515190",
-    telephone2Affiche: "+225 07 97 51 51 90",
-    whatsappNumero: "2250161407064",
+    telephone1: _secDecode("KzIyNSAwMTYxNDA3MDY0"),
+    telephone1Affiche: _secDecode("KzIyNSAwMSA2MSA0MCA3MCA2NA=="),
+    telephone2: _secDecode("KzIyNSAwNzk3NTE1MTkw"),
+    telephone2Affiche: _secDecode("KzIyNSAwNyA5NyA1MSA1MSA5MA=="),
+    whatsappNumero: _secDecode("MjI1MDE2MTQwNzA2NA=="),
     whatsappMessage: "Bonjour M. EZOUA, j'ai parcouru votre Odyssée Technologique et votre CV. J'aimerais échanger avec vous pour une opportunité de stage / projet.",
-    email: "ez.emian77@gmail.com",
+    email: _secDecode("ZXouZW1pYW43N0BnbWFpbC5jb20="),
     github: "https://github.com/Christ-Hub-pixel",
     githubPseudo: "Christ-Hub-pixel",
     linkedin: "https://linkedin.com/in/emian-ezoua",

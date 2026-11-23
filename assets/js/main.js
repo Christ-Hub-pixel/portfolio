@@ -2129,7 +2129,9 @@ Aucun état de branche ou de fichiers n’est consulté.
 ✓ Un nouvel onglet WhatsApp va s’ouvrir. Vous pourrez modifier le message avant de l’envoyer.
 `;
       setTimeout(() => {
-        window.open("https://wa.me/2250161407064?text=" + encodeURIComponent("Bonjour, je souhaite échanger avec vous au sujet de votre portfolio."), "_blank");
+        const waNum = window.PORTFOLIO_CONFIG?.contacts?.whatsappNumero || "";
+        if (!waNum) return;
+        window.open("https://wa.me/" + waNum + "?text=" + encodeURIComponent("Bonjour, je souhaite échanger avec vous au sujet de votre portfolio."), "_blank", "noopener,noreferrer");
       }, 2000);
     } else if (cmd === "clear" || cmd === "cls") {
       cliHistory = `<span class="cli-out-gold">Session nettoyée.</span> Tapez 'help' pour les commandes disponibles.\n`;
@@ -2722,25 +2724,14 @@ function initClipboardButtons() {
   function showToast(message) {
     if (!toast) return;
     toast.textContent = message;
-    toast.classList.add("show");
-    setTimeout(() => toast.classList.remove("show"), 3200);
+    toast.classList.add("show", "security-alert");
+    setTimeout(() => toast.classList.remove("show", "security-alert"), 2800);
   }
 
   document.querySelectorAll(".copy-btn").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const targetId = btn.getAttribute("data-copy-target");
-      const targetEl = document.getElementById(targetId);
-      if (!targetEl) return;
-
-      const textToCopy = targetEl.textContent.trim();
-      navigator.clipboard
-        .writeText(textToCopy)
-        .then(() => {
-          showToast(`Copié : ${textToCopy}`);
-        })
-        .catch(() => {
-          showToast(`Information : ${textToCopy}`);
-        });
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      showToast("Copie désactivée par la politique de sécurité.");
     });
   });
 }
@@ -2804,15 +2795,40 @@ function initContactForm(config) {
     });
   }
 
+  let lastSubmitTs = 0;
+
+  function sanitizePlainText(str, maxLen) {
+    return String(str || "")
+      .replace(/[<>]/g, "")
+      .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, "")
+      .trim()
+      .slice(0, maxLen);
+  }
+
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     // Protection anti-spam honeypot
     if (honeypot && honeypot.value.trim() !== "") return;
 
-    const nom = document.getElementById("senderName").value.trim();
-    const motif = reasonSelect ? reasonSelect.value : "Stage / Projet";
-    const sujet = subjectInput ? subjectInput.value.trim() : "";
-    const message = document.getElementById("senderMessage").value.trim();
+    // Protection anti-bot temporelle (rejet des soumissions instantanées < 1.5s)
+    const now = Date.now();
+    if (window.__PORTFOLIO_LOAD_TS__ && now - window.__PORTFOLIO_LOAD_TS__ < 1500) return;
+
+    // Limitation de débit (cooldown 10s entre deux envois)
+    if (now - lastSubmitTs < 10000) {
+      const toast = document.getElementById("toastNotice");
+      if (toast) {
+        toast.textContent = "Veuillez patienter quelques secondes avant un nouvel envoi.";
+        toast.classList.add("show", "security-alert");
+        setTimeout(() => toast.classList.remove("show", "security-alert"), 3000);
+      }
+      return;
+    }
+
+    const nom = sanitizePlainText(document.getElementById("senderName").value, 120);
+    const motif = sanitizePlainText(reasonSelect ? reasonSelect.value : "Stage / Projet", 80);
+    const sujet = sanitizePlainText(subjectInput ? subjectInput.value : "", 140);
+    const message = sanitizePlainText(document.getElementById("senderMessage").value, 1500);
 
     const invalid = fields.filter((f) => f.el && !validateField(f));
     if (invalid.length) {
@@ -2820,6 +2836,7 @@ function initContactForm(config) {
       return;
     }
 
+    lastSubmitTs = now;
     const texteFinal = `Bonjour M. EZOUA,\nJe m'appelle ${nom}.\nMotif : ${motif}\nObjet : ${sujet || motif}\n\n${message}`;
     const whatsappUrl = `https://wa.me/${config.contacts.whatsappNumero}?text=${encodeURIComponent(texteFinal)}`;
 
@@ -2834,7 +2851,7 @@ function initContactForm(config) {
       toast.classList.add("show");
       setTimeout(() => toast.classList.remove("show"), 3200);
     }
-    window.open(whatsappUrl, "_blank", "noopener");
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
   });
 }
 

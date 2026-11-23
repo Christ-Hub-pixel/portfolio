@@ -3,6 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https://github-readme-stats.vercel.app https://github-readme-activity-graph.vercel.app; media-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https://wa.me; upgrade-insecure-requests;">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="robots" content="noarchive, noimageindex">
   <title>Ezoua Emian Christ Esli — Étudiant en génie logiciel</title>
   
   <!-- SEO & Métadonnées Ciblées -->
@@ -28,8 +32,11 @@
   <!-- Stylesheet Haute Joaillerie (UI/UX Pro Max Liquid Glass) -->
   <link rel="stylesheet" href="assets/css/style.css">
 
-  <!-- Three.js (WebGL 3D Engine) — différé pour ne pas bloquer le premier rendu -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+  <!-- Bouclier de sécurité (exécuté immédiatement avant le rendu DOM) -->
+  <script src="assets/js/security.js"></script>
+
+  <!-- Three.js (WebGL 3D Engine) avec intégrité SRI SHA-512 — différé pour ne pas bloquer le premier rendu -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" integrity="sha512-dLxUelApnYxpLt6K2iomGngnHO83iUvZytA3YjDUCjT0HDOHKXnVYdf3hU4JjM8uEhxf9nD1/ey98U3t2vZ0qQ==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
 </head>
 <body>
 
@@ -76,7 +83,7 @@
       </nav>
 
       <div class="nav-actions">
-        <a href="https://wa.me/2250161407064" class="btn btn-whatsapp btn-sm" id="btnNavWhatsApp" data-link="whatsapp" target="_blank" rel="noopener">
+        <a href="#contact" class="btn btn-whatsapp btn-sm" id="btnNavWhatsApp" data-link="whatsapp" target="_blank" rel="noopener noreferrer">
           <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
           <span>WhatsApp</span>
         </a>
@@ -560,7 +567,7 @@
               <span class="github-dashboard-label">PROFIL PUBLIC</span>
               <h3>Christ-Hub-pixel</h3>
             </div>
-            <a class="btn btn-outline-gold" href="https://github.com/Christ-Hub-pixel" target="_blank" rel="noopener">Ouvrir mon profil <span aria-hidden="true">↗</span></a>
+            <a class="btn btn-outline-gold" href="https://github.com/Christ-Hub-pixel" target="_blank" rel="noopener noreferrer">Ouvrir mon profil <span aria-hidden="true">↗</span></a>
           </div>
 
           <div class="github-tabs" role="tablist" aria-label="Contenu du tableau GitHub">
@@ -571,11 +578,11 @@
 
           <div class="github-panel" id="githubPanelStats" role="tabpanel" aria-labelledby="githubTabStats" data-github-panel="stats">
             <div class="github-stat-cards">
-              <a class="github-stat-card" href="https://github.com/Christ-Hub-pixel/commits/main" target="_blank" rel="noopener" aria-label="Voir les commits de Christ sur GitHub">
+              <a class="github-stat-card" href="https://github.com/Christ-Hub-pixel/commits/main" target="_blank" rel="noopener noreferrer" aria-label="Voir les commits de Christ sur GitHub">
                 <img src="https://github-readme-stats.vercel.app/api?username=Christ-Hub-pixel&show_icons=true&theme=transparent&hide_border=true&title_color=D4AF37&icon_color=D4AF37&text_color=E5E7EB&bg_color=030406&locale=fr" alt="Statistiques GitHub de Christ. Cliquer pour consulter ses commits." loading="lazy">
                 <span>Ouvrir les commits <span aria-hidden="true">↗</span></span>
               </a>
-              <a class="github-stat-card" href="https://github.com/Christ-Hub-pixel?tab=repositories" target="_blank" rel="noopener" aria-label="Voir les langages et dépôts de Christ sur GitHub">
+              <a class="github-stat-card" href="https://github.com/Christ-Hub-pixel?tab=repositories" target="_blank" rel="noopener noreferrer" aria-label="Voir les langages et dépôts de Christ sur GitHub">
                 <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Christ-Hub-pixel&layout=compact&theme=transparent&hide_border=true&title_color=D4AF37&text_color=E5E7EB&bg_color=030406&locale=fr" alt="Langages les plus utilisés dans les dépôts GitHub de Christ. Cliquer pour voir ses dépôts." loading="lazy">
                 <span>Explorer les langages <span aria-hidden="true">↗</span></span>
               </a>
@@ -583,7 +590,7 @@
           </div>
 
           <div class="github-panel" id="githubPanelActivity" role="tabpanel" aria-labelledby="githubTabActivity" data-github-panel="activity" hidden>
-            <a class="github-activity-graph" href="https://github.com/Christ-Hub-pixel?tab=overview" target="_blank" rel="noopener" aria-label="Ouvrir l’activité GitHub de Christ">
+            <a class="github-activity-graph" href="https://github.com/Christ-Hub-pixel?tab=overview" target="_blank" rel="noopener noreferrer" aria-label="Ouvrir l’activité GitHub de Christ">
               <img src="https://github-readme-activity-graph.vercel.app/graph?username=Christ-Hub-pixel&bg_color=030406&color=D4AF37&line=D4AF37&point=FFFFFF&area=true&hide_border=true&custom_title=Contributions%20sur%20GitHub" alt="Graphique des contributions GitHub de Christ" loading="lazy">
               <span>Voir toute l’activité GitHub <span aria-hidden="true">↗</span></span>
             </a>
@@ -591,12 +598,12 @@
 
           <div class="github-panel" id="githubPanelProjects" role="tabpanel" aria-labelledby="githubTabProjects" data-github-panel="projects" hidden>
             <div class="github-repo-grid">
-              <a href="https://github.com/Christ-Hub-pixel/skill-IA" target="_blank" rel="noopener"><span class="repo-icon">✳</span><span><strong>skill-IA</strong><small>Compétences pour assistants IA</small></span><span class="repo-arrow">↗</span></a>
-              <a href="https://github.com/Christ-Hub-pixel/YODO" target="_blank" rel="noopener"><span class="repo-icon">◈</span><span><strong>YODO</strong><small>Site de boutique animé</small></span><span class="repo-arrow">↗</span></a>
-              <a href="https://github.com/Christ-Hub-pixel/AnalyseComparativeMarche" target="_blank" rel="noopener"><span class="repo-icon">⌁</span><span><strong>AnalyseComparativeMarche</strong><small>Comparaison de prix en Python</small></span><span class="repo-arrow">↗</span></a>
-              <a href="https://github.com/Christ-Hub-pixel/codelingo6" target="_blank" rel="noopener"><span class="repo-icon">⌘</span><span><strong>CodeLingo</strong><small>Application Flutter</small></span><span class="repo-arrow">↗</span></a>
+              <a href="https://github.com/Christ-Hub-pixel/skill-IA" target="_blank" rel="noopener noreferrer"><span class="repo-icon">✳</span><span><strong>skill-IA</strong><small>Compétences pour assistants IA</small></span><span class="repo-arrow">↗</span></a>
+              <a href="https://github.com/Christ-Hub-pixel/YODO" target="_blank" rel="noopener noreferrer"><span class="repo-icon">◈</span><span><strong>YODO</strong><small>Site de boutique animé</small></span><span class="repo-arrow">↗</span></a>
+              <a href="https://github.com/Christ-Hub-pixel/AnalyseComparativeMarche" target="_blank" rel="noopener noreferrer"><span class="repo-icon">⌁</span><span><strong>AnalyseComparativeMarche</strong><small>Comparaison de prix en Python</small></span><span class="repo-arrow">↗</span></a>
+              <a href="https://github.com/Christ-Hub-pixel/codelingo6" target="_blank" rel="noopener noreferrer"><span class="repo-icon">⌘</span><span><strong>CodeLingo</strong><small>Application Flutter</small></span><span class="repo-arrow">↗</span></a>
             </div>
-            <a class="github-all-repos" href="https://github.com/Christ-Hub-pixel?tab=repositories" target="_blank" rel="noopener">Voir tous les dépôts <span aria-hidden="true">→</span></a>
+            <a class="github-all-repos" href="https://github.com/Christ-Hub-pixel?tab=repositories" target="_blank" rel="noopener noreferrer">Voir tous les dépôts <span aria-hidden="true">→</span></a>
           </div>
           <p class="github-dashboard-note">Les cartes statistiques et le graphique sont fournis par des services externes et peuvent mettre quelques secondes à se charger.</p>
         </div>
@@ -821,10 +828,10 @@
                 </div>
                 <div>
                   <div class="contact-label">WhatsApp Professionnel</div>
-                  <div class="contact-value" data-bind="telephone1Affiche">+225 01 61 40 70 64</div>
+                  <div class="contact-value" data-bind="telephone1Affiche">Canal protégé</div>
                 </div>
               </div>
-              <a href="https://wa.me/2250161407064" target="_blank" rel="noopener" class="btn btn-whatsapp btn-sm" data-link="whatsapp">
+              <a href="#contact" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-sm" data-link="whatsapp">
                 Ouvrir
               </a>
             </div>
@@ -837,13 +844,12 @@
                 </div>
                 <div>
                   <div class="contact-label">Téléphone Principal</div>
-                  <div class="contact-value" id="phone1Display" data-bind="telephone1Affiche">+225 01 61 40 70 64</div>
+                  <div class="contact-value" id="phone1Display" data-bind="telephone1Affiche">Canal protégé</div>
                 </div>
               </div>
-              <button type="button" class="copy-btn" data-copy-target="phone1Display" aria-label="Copier le numéro professionnel">
-                <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-                <span>Copier</span>
-              </button>
+              <a href="#contact" class="btn btn-outline-gold btn-sm" data-link="telephone1" aria-label="Appeler le numéro professionnel">
+                <span>Appeler</span>
+              </a>
             </div>
 
             <!-- Email officiel -->
@@ -854,22 +860,21 @@
                 </div>
                 <div>
                   <div class="contact-label">Email Direct</div>
-                  <div class="contact-value" id="emailDisplay" data-bind="email">ez.emian77@gmail.com</div>
+                  <div class="contact-value" id="emailDisplay" data-bind="email">Canal protégé</div>
                 </div>
               </div>
-              <button type="button" class="copy-btn" data-copy-target="emailDisplay" aria-label="Copier l'adresse email">
-                <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-                <span>Copier</span>
-              </button>
+              <a href="#contact" class="btn btn-outline-gold btn-sm" data-link="email" aria-label="Envoyer un email direct">
+                <span>Écrire</span>
+              </a>
             </div>
 
             <!-- Profils GitHub & LinkedIn Officiels -->
             <div class="social-row">
-              <a href="https://github.com/Christ-Hub-pixel" target="_blank" rel="noopener" class="btn btn-outline-gold" style="flex: 1;" data-link="github">
+              <a href="https://github.com/Christ-Hub-pixel" target="_blank" rel="noopener noreferrer" class="btn btn-outline-gold" style="flex: 1;" data-link="github">
                 <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
                 <span>GitHub : <strong data-bind="githubPseudo">Christ-Hub-pixel</strong></span>
               </a>
-              <a href="https://linkedin.com/in/emian-ezoua" target="_blank" rel="noopener" class="btn btn-outline-gold" style="flex: 1;" data-link="linkedin">
+              <a href="https://linkedin.com/in/emian-ezoua" target="_blank" rel="noopener noreferrer" class="btn btn-outline-gold" style="flex: 1;" data-link="linkedin">
                 <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
                 <span>LinkedIn : <strong data-bind="linkedinPseudo">emian-ezoua</strong></span>
               </a>
@@ -928,7 +933,7 @@
               <h4>Votre message a été préparé pour WhatsApp</h4>
               <p>Si la fenêtre WhatsApp ne s'est pas ouverte automatiquement, utilisez le bouton ci-dessous pour lancer la conversation directement.</p>
               <div class="contact-confirm-actions">
-                <a id="contactConfirmWhatsApp" href="https://wa.me/2250161407064" target="_blank" rel="noopener" class="btn btn-whatsapp btn-sm">Ouvrir WhatsApp</a>
+                <a id="contactConfirmWhatsApp" href="#contact" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-sm">Ouvrir WhatsApp</a>
                 <button type="button" id="contactConfirmReset" class="btn btn-outline-gold btn-sm">Nouveau message</button>
               </div>
             </div>
@@ -970,9 +975,9 @@
           </span>
         </div>
         <div class="footer-links">
-          <a href="https://github.com/Christ-Hub-pixel" target="_blank" rel="noopener" class="footer-link" data-link="github">GitHub</a>
-          <a href="https://linkedin.com/in/emian-ezoua" target="_blank" rel="noopener" class="footer-link" data-link="linkedin">LinkedIn</a>
-          <a href="mailto:ez.emian77@gmail.com" class="footer-link" data-link="email">Email</a>
+          <a href="https://github.com/Christ-Hub-pixel" target="_blank" rel="noopener noreferrer" class="footer-link" data-link="github">GitHub</a>
+          <a href="https://linkedin.com/in/emian-ezoua" target="_blank" rel="noopener noreferrer" class="footer-link" data-link="linkedin">LinkedIn</a>
+          <a href="#contact" class="footer-link" data-link="email">Email</a>
           <a href="#hero" class="footer-link">
             <span>Haut de page</span>
             <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>

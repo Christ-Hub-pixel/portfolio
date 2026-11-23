@@ -4382,3 +4382,279 @@ html.sec-privacy-flash body {
     color: #111111;
   }
 }
+
+
+/* =========================================================================
+ * MOTEUR D'ANIMATIONS NEXT-GEN : PORTAIL QUANTIQUE, CONSTELLATION & SPOTLIGHT
+ * ========================================================================= */
+
+/* 1. Portail d'ouverture cinématique (Quantum Iris Reveal) */
+.quantum-intro-curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 999990;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at center, #14050b 0%, #030406 72%);
+  clip-path: circle(150% at 50% 50%);
+  transition: clip-path 0.92s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.55s ease;
+  pointer-events: none;
+}
+
+.quantum-intro-curtain.is-opening {
+  clip-path: circle(0% at 50% 50%);
+  opacity: 0;
+}
+
+.quantum-intro-core {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.quantum-ring {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.quantum-ring.ring-outer {
+  width: 210px;
+  height: 210px;
+  border: 1.5px solid rgba(212, 175, 55, 0.55);
+  border-top-color: #ff1e56;
+  border-right-color: transparent;
+  box-shadow: 0 0 38px rgba(212, 175, 55, 0.25);
+  animation: quantumSpinCW 1.4s linear infinite;
+}
+
+.quantum-ring.ring-inner {
+  width: 150px;
+  height: 150px;
+  border: 1.5px solid rgba(255, 30, 86, 0.5);
+  border-bottom-color: #f5d061;
+  border-left-color: transparent;
+  animation: quantumSpinCCW 1.1s linear infinite;
+}
+
+.quantum-monogram {
+  font-family: var(--font-display, sans-serif);
+  font-size: 2.15rem;
+  font-weight: 900;
+  letter-spacing: 0.28em;
+  padding-left: 0.28em;
+  background: linear-gradient(120deg, #fff5d6 0%, #d4af37 45%, #ff1e56 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: quantumPulseGlow 0.9s ease-in-out infinite alternate;
+}
+
+.quantum-subline {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.68rem;
+  letter-spacing: 0.28em;
+  color: rgba(245, 208, 97, 0.85);
+}
+
+@keyframes quantumSpinCW {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes quantumSpinCCW {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes quantumPulseGlow {
+  from {
+    transform: scale(0.96);
+    filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.35));
+  }
+  to {
+    transform: scale(1.04);
+    filter: drop-shadow(0 0 22px rgba(255, 30, 86, 0.55));
+  }
+}
+
+/* 2. Canvas Constellation Stellaire & Ondes de choc */
+.quantum-fx-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 9990;
+  pointer-events: none;
+}
+
+/* 3. Champ de force magnétique & reflet interne sur les boutons */
+.quantum-magnetic {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+  will-change: transform;
+}
+
+.quantum-magnetic::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    110px circle at var(--btn-mx, 50%) var(--btn-my, 50%),
+    rgba(255, 255, 255, 0.28),
+    rgba(212, 175, 55, 0.14) 45%,
+    transparent 75%
+  );
+  opacity: 0;
+  transition: opacity 0.28s ease;
+  pointer-events: none;
+}
+
+.quantum-magnetic:hover::after {
+  opacity: 1;
+}
+
+/* 4. Éclairage liquide dynamique sur les cartes (Border & Surface Spotlight) */
+.stat-card,
+.service-card,
+.about-pillar-card,
+.skill-cat-box,
+.academic-card,
+.odyssey-map-card,
+.odyssey-node-btn,
+.contact-card-direct,
+.contact-form-box,
+.planetary-codex-card,
+.github-dashboard,
+.project-card,
+.distinction-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card::before,
+.service-card::before,
+.about-pillar-card::before,
+.skill-cat-box::before,
+.academic-card::before,
+.odyssey-node-btn::before,
+.contact-card-direct::before,
+.contact-form-box::before,
+.distinction-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    360px circle at var(--mx, -400px) var(--my, -400px),
+    rgba(212, 175, 55, 0.16),
+    rgba(255, 30, 86, 0.08) 42%,
+    transparent 72%
+  );
+  opacity: 0;
+  transition: opacity 0.32s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.stat-card:hover::before,
+.service-card:hover::before,
+.about-pillar-card:hover::before,
+.skill-cat-box:hover::before,
+.academic-card:hover::before,
+.odyssey-node-btn:hover::before,
+.contact-card-direct:hover::before,
+.contact-form-box:hover::before,
+.distinction-card:hover::before {
+  opacity: 1;
+}
+
+/* 5. Entrée 3D en cascade sur les cartes projets filtrées */
+.quantum-card-enter {
+  animation: quantumCardFlipIn 0.58s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes quantumCardFlipIn {
+  0% {
+    opacity: 0;
+    transform: perspective(900px) translateY(26px) rotateX(10deg) scale(0.96);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(900px) translateY(0) rotateX(0deg) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* 6. Nova Pulse sur les planètes de l'Arsenal */
+.planet-pulse-active {
+  animation: quantumPlanetNova 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes quantumPlanetNova {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.65);
+  }
+  45% {
+    transform: scale(1.03);
+    box-shadow: 0 0 30px 6px rgba(255, 30, 86, 0.35);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
+  }
+}
+
+/* 7. Comète lumineuse sur la barre de progression de l'Odyssée */
+.quantum-comet-fill {
+  position: relative;
+  overflow: visible !important;
+  box-shadow: 0 0 14px rgba(212, 175, 55, 0.65), 0 0 26px rgba(255, 30, 86, 0.4);
+}
+
+.quantum-comet-fill::after {
+  content: "";
+  position: absolute;
+  right: -3px;
+  top: 50%;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  background: #fff7d6;
+  box-shadow: 0 0 10px 3px #f5d061, 0 0 20px 6px rgba(255, 30, 86, 0.75);
+}
+
+/* Inertie douce sur les grilles au scroll */
+.projects-grid,
+.services-grid,
+.stats-strip {
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+/* Respect strict de prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .quantum-intro-curtain,
+  .quantum-fx-canvas {
+    display: none !important;
+  }
+  .quantum-card-enter,
+  .planet-pulse-active {
+    animation: none !important;
+  }
+  .quantum-magnetic,
+  .projects-grid,
+  .services-grid,
+  .stats-strip {
+    transition: none !important;
+    transform: none !important;
+  }
+}
